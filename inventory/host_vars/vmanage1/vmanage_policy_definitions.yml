@@ -1,0 +1,46 @@
+vmanage_policy_definitions:
+    acl: []
+    aclv6: []
+    cflowd: []
+    control: []
+    data:
+    -   defaultAction:
+            type: accept
+        definitionId: eadb7d30-4717-4295-ad9c-d3ee9154643d
+        description: block_prefixes
+        isActivatedByVsmart: false
+        lastUpdated: 1558464877454
+        name: block_prefixes
+        owner: admin
+        referenceCount: 1
+        sequences:
+        -   actions: []
+            baseAction: drop
+            match:
+                entries:
+                -   field: sourceDataPrefixList
+                    listName: blocked_prefixes
+                    listType: dataPrefix
+                    ref: b1a88bc3-a143-4c3b-a895-887bb43f5777
+            sequenceId: 1
+            sequenceIpType: ipv4
+            sequenceName: Custom
+            sequenceType: data
+        -   actions: []
+            baseAction: drop
+            match:
+                entries:
+                -   field: destinationDataPrefixList
+                    listName: blocked_prefixes
+                    listType: dataPrefix
+                    ref: b1a88bc3-a143-4c3b-a895-887bb43f5777
+            sequenceId: 11
+            sequenceIpType: ipv4
+            sequenceName: Custom
+            sequenceType: data
+        type: data
+    dnssecurity: []
+    hubandspoke: []
+    mesh: []
+    rewriterule: []
+    vpnmembershipgroup: []

@@ -1,0 +1,42 @@
+vmanage_policy_lists:
+    dataprefix:
+    -   description: Desc Not Required
+        entries:
+        -   ipPrefix: 10.0.1.0/24
+        -   ipPrefix: 10.0.2.0/24
+        -   ipPrefix: 10.0.3.0/24
+        isActivatedByVsmart: false
+        lastUpdated: 1558464777434
+        listId: b1a88bc3-a143-4c3b-a895-887bb43f5777
+        name: blocked_prefixes
+        owner: admin
+        readOnly: false
+        referenceCount: 1
+        type: dataPrefix
+        version: '0'
+    site:
+    -   description: Desc Not Required
+        entries:
+        -   siteId: 0-999
+        isActivatedByVsmart: false
+        lastUpdated: 1558194623807
+        listId: fef095eb-6daf-4325-b188-8a1470234ee1
+        name: all_sites
+        owner: admin
+        readOnly: false
+        referenceCount: 1
+        type: site
+        version: '0'
+    vpn:
+    -   description: Desc Not Required
+        entries:
+        -   vpn: 0-999
+        isActivatedByVsmart: false
+        lastUpdated: 1558194624590
+        listId: e29fee70-746a-4898-908f-7a31d47a5f54
+        name: all_vpns
+        owner: admin
+        readOnly: false
+        referenceCount: 1
+        type: vpn
+        version: '0'

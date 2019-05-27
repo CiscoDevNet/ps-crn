@@ -1,0 +1,9 @@
+- hosts: network:&virl_hosts
+  connection: network_cli
+  gather_facts: no
+  tasks:
+  - name: Configure network device
+    cli_config:
+      config: "{{ lookup('template', config_template) }}"
+    vars:
+      config_template: "{{ ansible_network_os }}/virl.j2"

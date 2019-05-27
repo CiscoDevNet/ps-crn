@@ -1,0 +1,7 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: Clean the current topology
+    include_role:
+      name: ansible-virl
+      tasks_from: clean

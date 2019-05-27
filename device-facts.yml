@@ -1,0 +1,17 @@
+- name: Configure vmanage
+  hosts: vmanage1
+  connection: local
+  roles:
+    - ansible-viptela
+  gather_facts: no
+  tasks:
+    - name: Get device facts
+      vmanage_device_facts:
+        user: "{{ ansible_user }}"
+        host: "{{ ansible_host }}"
+        password: "{{ ansible_password }}"
+      register: device_facts
+      delegate_to: localhost
+
+    - debug:
+        var: device_facts

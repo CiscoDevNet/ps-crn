@@ -1,0 +1,41 @@
+viptela:
+  org: "{{ organization_name }}"
+  otp:  1e8704f29a01cc2aa2012a1d7bb6de3e
+  uuid: f3d5a496-6619-e0c3-4073-41b7a62d7282
+  site_id: 100
+  system_ip: 10.255.100.1
+  vbond:
+    remote: 172.20.1.11
+  template:
+    name: 'colo-vedge'
+    variables:
+      'vpn0_internet_ipv4_address': 172.21.0.6/24
+      'vpn0_default_gateway': 172.21.0.1
+      'vpn11_ipv4_address': 172.21.1.3/24
+      'vpn10_ipv4_address': 172.21.2.3/24
+
+vpn_instances:
+  - vpn_id: 0
+    interfaces:
+      - if_name: ge0/0
+        ip:
+          address: 172.21.0.6/24
+        tunnel_interface:
+          allow_service:
+            - netconf
+        shutdown: false
+    routes:
+      - prefix: 0.0.0.0/0
+        next_hop:
+          address: 172.21.0.1
+
+virl:
+  subtype: vEdge
+  interfaces:
+    - network: west-external
+      name: ge0/0
+    - network: west-corp
+      name: ge0/1
+    - network: west-guest
+      name: ge0/2
+  config_template: viptela/virl.j2
