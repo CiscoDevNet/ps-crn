@@ -1,6 +1,18 @@
 - hosts: localhost
   gather_facts: no
   tasks:
+  - name: Find previsouly created certs
+    find:
+      paths: "{{ viptela_cert_dir }}"
+      patterns: '*.pem,*.key,*.csr,*.crt'
+    register: find_results
+
+  - name: Delete previsouly created certs
+    file:
+      path: "{{ item['path'] }}"
+      state: absent
+    with_items: "{{ find_results['files'] }}"
+
   - name: Clean the current topology
     include_role:
       name: ansible-virl

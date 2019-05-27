@@ -7,7 +7,7 @@ _NOTE: The Topology requires images for vmanage, vbond, vsmart, vedge, and CSR10
 Cloning the workshop repo repo:
 
 ``` shell
-git clone https://wwwin-github.cisco.com/ciscops/ps-crn.git --recursive
+git clone --recursive https://wwwin-github.cisco.com/ciscodevnet/ps-crn.git
 ```
 >For more help with git, see DevNet's [A Brief Introduction to Git](https://learninglabs.cisco.com/lab/git-basic-workflows/step/1)
 

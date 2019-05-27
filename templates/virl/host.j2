@@ -21,7 +21,7 @@ users:
       shell: /bin/bash
 {#      ssh-authorized-keys:#}
 {#        - VIRL-USER-SSH-PUBLIC-KEY#}
-      sudo: ALL=(ALL) ALL
+      sudo: ALL=(ALL) NOPASSWD:ALL
 {#write_files:#}
 {#- path: /etc/systemd/system/dhclient@.service#}
 {#  content: |#}

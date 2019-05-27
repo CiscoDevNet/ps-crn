@@ -11,17 +11,17 @@ Content-Disposition: attachment; filename="vedge.cloud-config"
 #cloud-config
 vinitparam:
 {%  if viptela.otp is defined %}
- - otp : {{ viptela.otp }}
+ - otp: {{ viptela.otp }}
 {% endif %}{# viptela.otp is defined #}
-{%  if viptela.vbond is defined %}
- - vbond : {{ viptela.vbond }}
-{% endif %}{# viptela.vbond is defined #}
 {%  if viptela.uuid is defined %}
- - uuid : {{ viptela.uuid }}
+ - uuid: {{ viptela.uuid }}
 {% endif %}{# viptela.uuid is defined #}
 {%  if viptela.org is defined %}
- - org : {{ viptela.org }}
+ - org: {{ viptela.org }}
 {% endif %}{# viptela.org is defined #}
+{%  if viptela.vbond is defined %}
+ - vbond: {{ viptela.vbond.remote }}
+{% endif %}
 {% endif %}
 
 --===============6560338015520979320==
@@ -51,7 +51,7 @@ system
  organization-name       "{{ viptela.org }}"
 {% endif %}{# viptela.org is defined #}
 {% if viptela.vbond is defined %}
- vbond {{ viptela.vbond }} port 12346
+ vbond                   {{ viptela.vbond.remote }} {{ 'local' if vbond.local is sameas true else '' }}
 {% endif %}{# viptela.vbond is defined #}
 {% endif %}
 !

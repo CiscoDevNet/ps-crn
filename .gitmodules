@@ -1,9 +1,9 @@
 [submodule "roles/ansible-pyats"]
 	path = roles/ansible-pyats
-	url = git@github.com:CiscoDevNet/ansible-pyats.git
+	url = https://github.com/CiscoDevNet/ansible-pyats.git
 [submodule "roles/ansible-viptela"]
 	path = roles/ansible-viptela
-	url = git@github.com:CiscoDevNet/ansible-viptela.git
+	url = https://github.com/CiscoDevNet/ansible-viptela.git
 [submodule "roles/ansible-virl"]
 	path = roles/ansible-virl
-	url = git@github.com:CiscoDevNet/ansible-virl.git
+	url = https://github.com/CiscoDevNet/ansible-virl.git
