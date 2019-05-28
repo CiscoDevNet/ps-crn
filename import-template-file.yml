@@ -1,0 +1,16 @@
+- name: Import Templates
+  hosts: localhost
+  roles:
+    - ansible-viptela
+  vars:
+    vmanage_host: "{{ groups.vmanage_hosts | first }}"
+    vmanage_ip: "{{ hostvars[vmanage_host].ansible_host }}"
+    file: vmanage_templates.json
+  gather_facts: no
+  tasks:
+    - name: Import Templates
+      vmanage_template_import:
+        host: "{{ vmanage_ip }}"
+        user: "{{ ansible_user }}"
+        password: "{{ ansible_password }}"
+        file: "{{ file }}"

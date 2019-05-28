@@ -9,8 +9,8 @@ virl:
       name: GigabitEthernet0/2
     - network: east-cloud
       name: GigabitEthernet0/3
-    - network: east-corp
-      name: GigabitEthernet0/4
     - network: east-guest
+      name: GigabitEthernet0/4
+    - network: east-corp
       name: GigabitEthernet0/5
   config_template:  asa/virl.j2

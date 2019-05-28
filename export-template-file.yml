@@ -1,0 +1,18 @@
+- name: Configure vmanage
+  hosts: localhost
+  roles:
+    - ansible-viptela
+  vars:
+    vmanage_host: "{{ groups.vmanage_hosts | first }}"
+    vmanage_ip: "{{ hostvars[vmanage_host].ansible_host }}"
+    file: vmanage_templates.json
+  gather_facts: no
+  tasks:
+    - name: Get templates
+      vmanage_template_export:
+        user: "{{ ansible_user }}"
+        host: "{{ vmanage_ip }}"
+        password: "{{ ansible_password }}"
+        factory_default: no
+        file: "{{ file }}"
+      register: template_facts

@@ -9,5 +9,5 @@ viptela:
     variables:
       'vpn0_internet_ipv4_address': 172.21.0.6/24
       'vpn0_default_gateway': 172.21.0.1
-      'vpn10_ipv4_address': 10.21.3.0/24
-      'vpn11_ipv4_address': 10.21.4.0/24
+      'vpn10_ipv4_address': 10.21.3.3/24
+      'vpn11_ipv4_address': 10.21.4.3/24
