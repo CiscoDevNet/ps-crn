@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css">
-
+		<link rel="stylesheet" href="custom.css">
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
 
@@ -21,14 +21,6 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-		<style>
-			.container{
-				display: flex;
-			}
-			.col{
-				flex: 1;
-			}
-		</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -39,13 +31,13 @@
 					</textarea>
 				</section>
 				<section>
-				  <div class="col">
+				  <div class='multiCol'>
 					<p data-markdown>- This is my first left element</p>
 					<p data-markdown>- This is my second left element</p>
 					<!-- more Elements -->
 				  </div>
 
-				  <div class="col">
+				  <div class='multiCol'>
 					<p data-markdown>- This is my first right element</p>
 					<p data-markdown>- This is my second rightelement</p>
 					<!-- more Elements -->
