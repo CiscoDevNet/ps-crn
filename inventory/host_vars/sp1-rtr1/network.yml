@@ -10,7 +10,6 @@ interfaces:
       primary: 172.16.17.2/24
   GigabitEthernet3:
     enabled: true
-    vlan: 100
     ip:
       primary: 172.17.0.1/24
 

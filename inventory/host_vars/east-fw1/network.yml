@@ -42,12 +42,17 @@ interfaces:
       primary: 10.20.4.1/24
       standby: 10.20.4.2
 
-
 failover:
   role: primary
   ip: 10.255.255.1/30
   peer_ip: 10.255.255.2/30
   interface: GigabitEthernet0/0
+
+static_routes:
+  management:
+    - network: 0.0.0.0/0
+      fwd_list:
+        - fwd: 192.133.178.1
 
 router:
   ospf:
@@ -97,3 +102,9 @@ router:
           - no-redistribution
           - default-information-originate
           - no-summary
+
+dns_interface: management
+
+licensing:
+  feature: standard
+  throughput: 10G

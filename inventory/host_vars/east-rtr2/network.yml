@@ -10,7 +10,6 @@ interfaces:
       primary: 172.16.20.3/24
   GigabitEthernet3:
     enabled: true
-    vlan: 100
     ip:
       primary: 172.20.0.3/24
       standby:
@@ -47,7 +46,11 @@ router:
   ospf:
     id: 65020
     router_id: 172.20.0.3
-    default_information_originate: true
+    redistribute:
+      - protocol: bgp
+        protocol_id: 65020
+        options:
+          - subnets
     networks:
       - network: 172.20.0.0/24
         area: 0

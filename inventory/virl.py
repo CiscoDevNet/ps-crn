@@ -5,7 +5,6 @@ import sys
 import json
 import argparse
 import requests
-import pprint
 import re
 
 

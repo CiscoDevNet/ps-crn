@@ -15,6 +15,7 @@ aaa authorization exec LOCAL auto-enable
 {# ------------- #}
 {# Static Routes #}
 {# ------------- #}
+{{ lookup('template', 'asa/cli/static-routes.j2') }}
 !
 {# ---- #}
 {# OSPF #}

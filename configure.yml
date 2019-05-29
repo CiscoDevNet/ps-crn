@@ -108,6 +108,7 @@
         privatekey_path: "{{ viptela_cert_dir }}/myCA.key"
         privatekey_passphrase: "{{ viptela_CA_passphrase }}"
         csr_path: "{{ viptela_cert_dir }}/myCA.csr"
+        select_crypto_backend: pyopenssl
         provider: selfsigned
 
 - name: Configuring Viptela components
@@ -271,6 +272,7 @@
         ownca_path: "{{ viptela_cert_dir }}/myCA.pem"
         ownca_privatekey_path: "{{ viptela_cert_dir }}/myCA.key"
         ownca_privatekey_passphrase: "{{ viptela_CA_passphrase }}"
+        select_crypto_backend: pyopenssl
       loop: "{{ groups.viptela_control }}"
       delegate_to: localhost
 

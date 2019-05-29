@@ -30,7 +30,7 @@ interfaces:
       primary: 172.16.23.1/24
 static_routes:
   global:
-    - network: 0.0.0.0/0
+    - network: 172.16.0.0/12
       fwd_list:
         - fwd: Null0
 
@@ -69,5 +69,4 @@ router:
             - id: 172.16.21.3
               activate: true
           networks:
-            - network: 172.16.17./24
-            - network: 0.0.0.0/0
+            - network: 172.16.0.0/12

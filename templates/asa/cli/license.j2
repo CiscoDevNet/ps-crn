@@ -1,7 +1,13 @@
+{% if licensing is defined %}
 license smart
- feature tier standard
- throughput level 10G
+{%   if licensing.feature is defined %}
+ feature tier {{ licensing.feature }}
+{%   endif %}
+{%   if licensing.throughout is defined %}
+ throughput level {{ licensing.throughout }}
+{%   endif %}
 !
-{% if smart_license_token is defined %}
-license smart register idtoken {{ smart_license_token }}
+{%   if licensing.token is defined %}
+license smart register idtoken {{ licensing.token }}
+{%   endif %}
 {% endif %}

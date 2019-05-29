@@ -17,14 +17,14 @@
         file: "{{ file }}"
         name: vmanage_policy
 
-    - name: Deactivate central policy
-      vmanage_central_policy:
-        user: "{{ ansible_user }}"
-        host: "{{ vmanage_ip }}"
-        password: "{{ ansible_password }}"
-        state: deactivated
-        name: central_policy
-        wait: yes
+#    - name: Deactivate central policy
+#      vmanage_central_policy:
+#        user: "{{ ansible_user }}"
+#        host: "{{ vmanage_ip }}"
+#        password: "{{ ansible_password }}"
+#        state: deactivated
+#        name: central_policy
+#        wait: yes
 
     - name: Import policy lists
       tags:
