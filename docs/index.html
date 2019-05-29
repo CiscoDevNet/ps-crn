@@ -21,18 +21,31 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						## Public Sector Cloud Ready Network
+					</textarea>
+				</section>
 				<section>
-				  <div style="text-align: left; float: left;">
+				  <div class="col">
 					<p data-markdown>- This is my first left element</p>
 					<p data-markdown>- This is my second left element</p>
 					<!-- more Elements -->
 				  </div>
 
-				  <div style="text-align: right; float: right;">
+				  <div class="col">
 					<p data-markdown>- This is my first right element</p>
 					<p data-markdown>- This is my second rightelement</p>
 					<!-- more Elements -->
