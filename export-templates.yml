@@ -1,5 +1,6 @@
 - name: Export vManage Policy Lists
   hosts: localhost
+  connection: local
   roles:
     - ansible-viptela
   vars:
@@ -15,7 +16,6 @@
         password: "{{ ansible_password }}"
         factory_default: no
       register: device_template_facts
-      delegate_to: localhost
 
     - name: Get feature templates
       vmanage_feature_template_facts:
@@ -24,7 +24,6 @@
         password: "{{ ansible_password }}"
         factory_default: no
       register: feature_template_facts
-      delegate_to: localhost
 
     - set_fact:
         viptela_templates:
