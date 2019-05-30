@@ -1,5 +1,5 @@
 /**
- * An ANSIBLE theme for reveal.js presentations, similar
+ * Theme for reveal.js presentations, similar
  * to the simple theme. 
  */
 @import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
@@ -30,7 +30,7 @@ mark span.hljs-number{
 
 mark span.hljs-symbol,
 mark span.hljs-string{
-  color: #af2e2e;
+  color: #097DBC;
 }
 
 .reveal {
@@ -378,7 +378,7 @@ div.ans-mark{
 }
 
 div.ans-mark .circle{
-  fill:#CC0000;
+  fill:#004BAF;
 }
 
 .cover div.ans-mark .circle,
@@ -418,7 +418,7 @@ svg .a-mark{
 
 .cover .slide-background.present,
 .title.alt .slide-background.present{
-  background-color: #cc0000;
+  background-color: #097DBC;
   display: block !important;
 }
 
@@ -438,7 +438,7 @@ svg .a-mark{
 .title .reveal h2,
 .title .reveal h3,
 .title .reveal h4{
-  color: #cc0000;
+  color: #004BAF;
 }
 
 
@@ -462,7 +462,7 @@ svg .a-mark{
 }
 
 .reveal .progress span {
-  background: #ff5850;
+  background: #049FD9;
 }
 
 .monospace{
@@ -522,7 +522,7 @@ svg .a-mark{
   
   .ans-logo{
     padding: 20px !important;
-    background: #c00;
+    background: #004BAF;
     display: inline-block;
   }
   

@@ -4,14 +4,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Public Sector Cloud Ready Network</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/simple.css">
-		<link rel="stylesheet" href="custom.css">
+		<!--<link rel="stylesheet" href="css/reset.css">-->
+		<!--<link rel="stylesheet" href="css/reveal.css">-->
+		<!--<link rel="stylesheet" href="css/theme/simple.css">-->
+
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+		<!--<link rel="stylesheet" href="lib/css/monokai.css">-->
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.4.1/css/reveal.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -21,6 +23,8 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<link rel="stylesheet" href="custom.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css">
 	</head>
 	<body>
 		<style>
@@ -33,7 +37,7 @@
 		</style>
 		<div class="reveal">
 			<div class="slides">
-				<section>
+				<section data-state="cover">
 					<h1>Public Sector Cloud Ready Network</h1>
 				</section>
 				<section>
@@ -72,7 +76,116 @@
 							</ul>
 						  </div>
 						  <div class="col">
-							  <img class="plain" src="colo_network.png"/>
+							  <img class="plain" src="images/colo_network.png"/>
+						  </div>
+					  </div>
+					</div>
+				</section>
+				<section>
+          			<h2>Colo Security Stack</h2>
+          				<div style="font-size: 0.75em;">
+						<div class="columns">
+						  <div class="col">
+							<ul>
+							  	<li>Security Visability:</li>
+								<ul>
+									<li>Stealthwatch</li>
+								</ul>
+								<li>Automated Threat Intellience Protection</li>
+								<ul>
+									<li>Firepower - IDS/IPS</li>
+									<li>AMP - End Point Security</li>
+								</ul>
+								<li>Security Services</li>
+								<ul>
+									<li>DUO</li>
+									<li>Umbrella</li>
+								</ul>
+							</ul>
+						  </div>
+						  <div class="col">
+							  <img class="plain" src="images/colo_security.png"/>
+						  </div>
+					  </div>
+					</div>
+				</section>
+				<section>
+          			<h2>COLO Tenant Traffic Flow</h2>
+          				<div style="font-size: 0.75em;">
+						<div class="columns">
+						  <div class="col">
+							<ul>
+							  	<li>Multi-Tenant Fabric</li>
+								<li>Intra-Tenant traffic stays within SD-WAN Fabric</li>
+								<li>MPLS Router provides path diversity over private network</li>
+								<li>Inter-Tenant traffic passes through Firewall for policy enforcement</li>
+							</ul>
+						  </div>
+						  <div class="col">
+							  <img class="plain" src="images/colo_tenant_traffic.png"/>
+						  </div>
+					  </div>
+					</div>
+				</section>
+				<section>
+          			<h2>COLO Routing Protocols</h2>
+          				<div style="font-size: 0.75em;">
+						<div class="columns">
+						  <div class="col">
+							<ul>
+							  	<li>Each Tenant is in its own OSPF NSSA Area</li>
+								<li>OSPF Area 0 between the Firewalls and the Internet Router</li>
+								<li>BGP to the Service Providers</li>
+							</ul>
+						  </div>
+						  <div class="col">
+							  <img class="plain" src="images/colo_routing_protocols.png"/>
+						  </div>
+					  </div>
+					</div>
+				</section>
+				<section>
+          			<h2>COLO High Availability</h2>
+          				<div style="font-size: 0.75em;">
+						<div class="columns">
+						  <div class="col">
+							<ul>
+							  	<li>Internet Routers:</li>
+								<ul>
+									<li>Redundant BGP Peerings</li>
+									<li>Receive default from upstream and redistribute into OSPF</li>
+								</ul>
+								<li>vEdge Transport Interfaces/ Firewall Outside Interfaces</li>
+								<ul>
+									<li>Peer with Internet routers via OSPF in area 0, receive default route</li>
+								</ul>
+								<li>vEdge Service Interfaces/ Firewall Tenant Interfaces</li>
+								<ul>
+									<li>Each Tenant VPN and Firewall on different VLAN tag</li>
+									<li>Each vEdge Service interface, Firewall interfaces, and potentially COLO router VRF peer in separate OSPF area</li>
+								</ul>
+							</ul>
+						  </div>
+						  <div class="col">
+							  <img class="plain" src="images/colo_ha.png"/>
+						  </div>
+					  </div>
+					</div>
+				</section>
+				<section>
+          			<h2>Physical Stack</h2>
+          				<div style="font-size: 0.75em;">
+						<div class="columns">
+						  <div class="col">
+							<ul>
+							  	<li>Cat 9K ToR Aggregation</li>
+								<li>CSPs provide VNF support and automation</li>
+								<li>PNF for line-rate routing, policy enforcement, and inspection</li>
+								<li>HyperFlex provides converged computing for Shared Services</li>
+							</ul>
+						  </div>
+						  <div class="col">
+							  <img class="plain" src="images/colo_physical.png"/>
 						  </div>
 					  </div>
 					</div>
