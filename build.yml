@@ -1,5 +1,6 @@
 - name: Add host to topology
   hosts: localhost
+  connection: local
   gather_facts: no
   tags:
     - cull
@@ -33,9 +34,9 @@
       when: virl.config_template is defined
 
 - hosts: virl_nodes
+  connection: local
   gather_facts: no
   run_once: yes
-  connection: local
   vars:
     topo_file: topo.virl
     topo_name: "{{ topo_file.split('.')[0] }}"
