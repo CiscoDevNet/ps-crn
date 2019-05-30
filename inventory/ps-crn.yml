@@ -1,4 +1,7 @@
 all:
+  hosts:
+    localhost:
+      ansible_python_interpreter: /Users/stevenca/Workspaces/ps-crn/ps-crn.venv/bin/python
   vars:
     ansible_user: admin
     ansible_password: admin
