@@ -10,7 +10,7 @@ This is VIRL topology and automated tooling for the [Public Sector Cloud Read Ne
 
 ## Topology
 
-![Alt Text](ps-crn_topology.png)
+![Alt Text](../images/ps-crn_topology.png)
 
 _The default username/password is `admin/admin`_
 
