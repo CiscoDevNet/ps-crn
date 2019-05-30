@@ -39,156 +39,181 @@
 			<div class="slides">
 				<section data-state="cover">
 					<h1>Public Sector Cloud Ready Network</h1>
+					<h3>DevNet Bundle</h3>
 				</section>
 				<section>
-					<h2>Fabric Overview</h2>
-					<img class="plain" src="overview.png"/>
+					<h2>What is a DevOps Bundle</h2>
+					<ul>
+						<li><strong>Architecture</strong> - Detailed architecture with customer-focused use cases</li>
+						<li><strong>Simulation</strong> - Dynamic VIRL topology in which to simulate architecture</li>
+						<li><strong>Automation</strong> - Automation tooling to deploy and operate in simulated and production environments</li>
+						<li><strong>Testing</strong> - Test tooling to verify deployment for CI/CD pipelines</li>
+						<li><strong>Learning Labs</strong> - Workshops to teach the components of the DevOps Bundle</li>
+					</ul>
 				</section>
 				<section>
-            		<h2>SD-WAN Features</h2>
-					<div style="font-size: 0.75em;"><br>
-					<p><strong>SEGMENTATION</strong> – Topology-driven network-wide segmentation</p>
-					<p><strong>SERVICE CHAINING</strong> – Insertion of security services into the traffic flow</br>
-					Firewalls, IDS, as well as third-party solutions</p>
-					<p><strong>END-to-END ENCRYPTION</strong> - Secure, zero-trust, authenticated transport</br>
-					Extend the SD-WAN encrypted fabric to branches and into the public cloud</p>
-					<p><strong>APPLICATION AWARE ROUTING</strong> - Intelligent traffic steering based on awareness of
-					the application’s locations (on-premise, public cloud, or SaaS) and SLA requirements</p>
-					<p><strong>HIGH AVAILABLITY</strong> - East/West COLO presence for geographic load-balancing and redundancy</br>
-					<p><strong>TRANSPORT INDEPENDANCE</strong>Major cost reduction relating to WAN, including circuit cost, operational expenditure, and the ability to leverage lower-cost bandwidth services, through transport optimization.</p>
-					<p><strong>ANALYTICS</strong> – Advanced analytics for both real-time insight to the WAN fabric’s behavior, as well as future-looking “what-if” analysis for billing, capacity planning, all cloud managed</p>
-					</div>
-					<aside class="notes">
-					</aside>
-				</section>
-				<section>
-          			<h2>Colo Node</h2>
-          				<div style="font-size: 0.75em;">
-						<div class="columns">
-						  <div class="col">
-							<ul>
-							  	<li>Internet Routers peer with Service Providers and other Peers</li>
-								<li>Cloud Exchange Routers connect to AWS, Azure, GCE, etc. through the COLO</li>
-								<li>MPLS Router provides path diversity over private network</li>
-								<li>Tenant vEdges terminate the SD-WAN multi-tenant fabric</li>
-								<li>Inter-Tenant Firewalls enforce policy outside<->tenant and tenant<->tenant</li>
-								<li>Optional COLO Routers route traffic within Shared Services node</li>
-							</ul>
-						  </div>
-						  <div class="col">
-							  <img class="plain" src="images/colo_network.png"/>
-						  </div>
-					  </div>
-					</div>
-				</section>
-				<section>
-          			<h2>Colo Security Stack</h2>
-          				<div style="font-size: 0.75em;">
-						<div class="columns">
-						  <div class="col">
-							<ul>
-							  	<li>Security Visability:</li>
+					<section>
+						<h1>Architecture</h1>
+					</section>
+					<section>
+						<h2>Fabric Overview</h2>
+						<img class="plain" src="overview.png"/>
+					</section>
+					<section>
+						<h2>SD-WAN Features</h2>
+						<div style="font-size: 0.75em;"><br>
+						<p><strong>SEGMENTATION</strong> – Topology-driven network-wide segmentation</p>
+						<p><strong>SERVICE CHAINING</strong> – Insertion of security services into the traffic flow</br>
+						Firewalls, IDS, as well as third-party solutions</p>
+						<p><strong>END-to-END ENCRYPTION</strong> - Secure, zero-trust, authenticated transport</br>
+						Extend the SD-WAN encrypted fabric to branches and into the public cloud</p>
+						<p><strong>APPLICATION AWARE ROUTING</strong> - Intelligent traffic steering based on awareness of
+						the application’s locations (on-premise, public cloud, or SaaS) and SLA requirements</p>
+						<p><strong>HIGH AVAILABLITY</strong> - East/West COLO presence for geographic load-balancing and redundancy</br>
+						<p><strong>TRANSPORT INDEPENDANCE</strong>Major cost reduction relating to WAN, including circuit cost, operational expenditure, and the ability to leverage lower-cost bandwidth services, through transport optimization.</p>
+						<p><strong>ANALYTICS</strong> – Advanced analytics for both real-time insight to the WAN fabric’s behavior, as well as future-looking “what-if” analysis for billing, capacity planning, all cloud managed</p>
+						</div>
+						<aside class="notes">
+						</aside>
+					</section>
+					<section>
+						<h2>Colo Node</h2>
+							<div style="font-size: 0.75em;">
+							<div class="columns">
+							  <div class="col">
 								<ul>
-									<li>Stealthwatch</li>
+									<li>Internet Routers peer with Service Providers and other Peers</li>
+									<li>Cloud Exchange Routers connect to AWS, Azure, GCE, etc. through the COLO</li>
+									<li>MPLS Router provides path diversity over private network</li>
+									<li>Tenant vEdges terminate the SD-WAN multi-tenant fabric</li>
+									<li>Inter-Tenant Firewalls enforce policy outside<->tenant and tenant<->tenant</li>
+									<li>Optional COLO Routers route traffic within Shared Services node</li>
 								</ul>
-								<li>Automated Threat Intellience Protection</li>
-								<ul>
-									<li>Firepower - IDS/IPS</li>
-									<li>AMP - End Point Security</li>
-								</ul>
-								<li>Security Services</li>
-								<ul>
-									<li>DUO</li>
-									<li>Umbrella</li>
-								</ul>
-							</ul>
+							  </div>
+							  <div class="col">
+								  <img class="plain" src="images/colo_network.png"/>
+							  </div>
 						  </div>
-						  <div class="col">
-							  <img class="plain" src="images/colo_security.png"/>
+						</div>
+					</section>
+					<section>
+						<h2>Colo Security Stack</h2>
+							<div style="font-size: 0.75em;">
+							<div class="columns">
+							  <div class="col">
+								<ul>
+									<li>Security Visability:</li>
+									<ul>
+										<li>Stealthwatch</li>
+									</ul>
+									<li>Automated Threat Intellience Protection</li>
+									<ul>
+										<li>Firepower - IDS/IPS</li>
+										<li>AMP - End Point Security</li>
+									</ul>
+									<li>Security Services</li>
+									<ul>
+										<li>DUO</li>
+										<li>Umbrella</li>
+									</ul>
+								</ul>
+							  </div>
+							  <div class="col">
+								  <img class="plain" src="images/colo_security.png"/>
+							  </div>
 						  </div>
-					  </div>
-					</div>
+						</div>
+					</section>
+					<section>
+						<h2>COLO Tenant Traffic Flow</h2>
+							<div style="font-size: 0.75em;">
+							<div class="columns">
+							  <div class="col">
+								<ul>
+									<li>Multi-Tenant Fabric</li>
+									<li>Intra-Tenant traffic stays within SD-WAN Fabric</li>
+									<li>MPLS Router provides path diversity over private network</li>
+									<li>Inter-Tenant traffic passes through Firewall for policy enforcement</li>
+								</ul>
+							  </div>
+							  <div class="col">
+								  <img class="plain" src="images/colo_tenant_traffic.png"/>
+							  </div>
+						  </div>
+						</div>
+					</section>
+					<section>
+						<h2>COLO Routing Protocols</h2>
+							<div style="font-size: 0.75em;">
+							<div class="columns">
+							  <div class="col">
+								<ul>
+									<li>Each Tenant is in its own OSPF NSSA Area</li>
+									<li>OSPF Area 0 between the Firewalls and the Internet Router</li>
+									<li>BGP to the Service Providers</li>
+								</ul>
+							  </div>
+							  <div class="col">
+								  <img class="plain" src="images/colo_routing_protocols.png"/>
+							  </div>
+						  </div>
+						</div>
+					</section>
+					<section>
+						<h2>COLO High Availability</h2>
+							<div style="font-size: 0.75em;">
+							<div class="columns">
+							  <div class="col">
+								<ul>
+									<li>Internet Routers:</li>
+									<ul>
+										<li>Redundant BGP Peerings</li>
+										<li>Receive default from upstream and redistribute into OSPF</li>
+									</ul>
+									<li>vEdge Transport Interfaces/ Firewall Outside Interfaces</li>
+									<ul>
+										<li>Peer with Internet routers via OSPF in area 0, receive default route</li>
+									</ul>
+									<li>vEdge Service Interfaces/ Firewall Tenant Interfaces</li>
+									<ul>
+										<li>Each Tenant VPN and Firewall on different VLAN tag</li>
+										<li>Each vEdge Service interface, Firewall interfaces, and potentially COLO router VRF peer in separate OSPF area</li>
+									</ul>
+								</ul>
+							  </div>
+							  <div class="col">
+								  <img class="plain" src="images/colo_ha.png"/>
+							  </div>
+						  </div>
+						</div>
+					</section>
+					<section>
+						<h2>Physical Stack</h2>
+							<div style="font-size: 0.75em;">
+							<div class="columns">
+							  <div class="col">
+								<ul>
+									<li>Cat 9K ToR Aggregation</li>
+									<li>CSPs provide VNF support and automation</li>
+									<li>PNF for line-rate routing, policy enforcement, and inspection</li>
+									<li>HyperFlex provides converged computing for Shared Services</li>
+								</ul>
+							  </div>
+							  <div class="col">
+								  <img class="plain" src="images/colo_physical.png"/>
+							  </div>
+						  </div>
+						</div>
+					</section>
 				</section>
 				<section>
-          			<h2>COLO Tenant Traffic Flow</h2>
-          				<div style="font-size: 0.75em;">
-						<div class="columns">
-						  <div class="col">
-							<ul>
-							  	<li>Multi-Tenant Fabric</li>
-								<li>Intra-Tenant traffic stays within SD-WAN Fabric</li>
-								<li>MPLS Router provides path diversity over private network</li>
-								<li>Inter-Tenant traffic passes through Firewall for policy enforcement</li>
-							</ul>
-						  </div>
-						  <div class="col">
-							  <img class="plain" src="images/colo_tenant_traffic.png"/>
-						  </div>
-					  </div>
-					</div>
-				</section>
-				<section>
-          			<h2>COLO Routing Protocols</h2>
-          				<div style="font-size: 0.75em;">
-						<div class="columns">
-						  <div class="col">
-							<ul>
-							  	<li>Each Tenant is in its own OSPF NSSA Area</li>
-								<li>OSPF Area 0 between the Firewalls and the Internet Router</li>
-								<li>BGP to the Service Providers</li>
-							</ul>
-						  </div>
-						  <div class="col">
-							  <img class="plain" src="images/colo_routing_protocols.png"/>
-						  </div>
-					  </div>
-					</div>
-				</section>
-				<section>
-          			<h2>COLO High Availability</h2>
-          				<div style="font-size: 0.75em;">
-						<div class="columns">
-						  <div class="col">
-							<ul>
-							  	<li>Internet Routers:</li>
-								<ul>
-									<li>Redundant BGP Peerings</li>
-									<li>Receive default from upstream and redistribute into OSPF</li>
-								</ul>
-								<li>vEdge Transport Interfaces/ Firewall Outside Interfaces</li>
-								<ul>
-									<li>Peer with Internet routers via OSPF in area 0, receive default route</li>
-								</ul>
-								<li>vEdge Service Interfaces/ Firewall Tenant Interfaces</li>
-								<ul>
-									<li>Each Tenant VPN and Firewall on different VLAN tag</li>
-									<li>Each vEdge Service interface, Firewall interfaces, and potentially COLO router VRF peer in separate OSPF area</li>
-								</ul>
-							</ul>
-						  </div>
-						  <div class="col">
-							  <img class="plain" src="images/colo_ha.png"/>
-						  </div>
-					  </div>
-					</div>
-				</section>
-				<section>
-          			<h2>Physical Stack</h2>
-          				<div style="font-size: 0.75em;">
-						<div class="columns">
-						  <div class="col">
-							<ul>
-							  	<li>Cat 9K ToR Aggregation</li>
-								<li>CSPs provide VNF support and automation</li>
-								<li>PNF for line-rate routing, policy enforcement, and inspection</li>
-								<li>HyperFlex provides converged computing for Shared Services</li>
-							</ul>
-						  </div>
-						  <div class="col">
-							  <img class="plain" src="images/colo_physical.png"/>
-						  </div>
-					  </div>
-					</div>
+					<section>
+						<h1>Simulation</h1>
+					</section>
+					<section>
+						<h2>VIRL Topology</h2>
+						<img class="plain" src="images/virl_topology.png"/>
+					</section>
 				</section>
 			</div>
 		</div>
