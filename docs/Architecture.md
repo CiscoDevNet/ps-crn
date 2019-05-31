@@ -1,7 +1,7 @@
 # PS-CRN Architecture
 
 ## Fabric Overview
-<img src="images/overview.png" width="80%">
+<img src="images/sdwan_overview.png" width="80%">
 
 The SD-WAN fabric is anchored in East and West CoLos that provide peering, Internet access, and Cloud connectivity.  Since
 CoLos are built for high-availability, have abundant choices of Internet Service Providers, and are generally geographically
