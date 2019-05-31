@@ -6,6 +6,9 @@ interface {{ key }}
 {%  if value.nameif is defined %}
  nameif {{ value.nameif }}
 {%  endif %}{# value.vlan is defined #}
+{%  if (value.management_only is defined) and (value.management_only is sameas true) %}
+ management-only
+{%  endif %}{# management-only is defined #}
 {%  if value.security_level is defined %}
  security-level {{ value.security_level }}
 {%  endif %}{# value.security_level is defined #}
@@ -15,7 +18,7 @@ interface {{ key }}
 {%  if value.ip is defined %}
 {%   if value.ip.primary is defined %}
 {%    if value.ip.primary == 'dhcp' %}
- ip address dhcp
+ ip address dhcp setroute
 {%    elif value.ip.standby is defined %}
  ip address {{ value.ip.primary|ipaddr('address') }} {{ value.ip.primary|ipaddr('netmask') }} standby {{ value.ip.standby|ipaddr('address') }}
 {%    else %}

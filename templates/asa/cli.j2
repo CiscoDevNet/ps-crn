@@ -20,6 +20,11 @@ username {{ ansible_user }} password {{ ansible_password }}
 {# ---- #}
 {{ lookup('template', 'asa/cli/ospf.j2') }}
 !
+{# ---- #}
+{# BGP  #}
+{# ---- #}
+{{ lookup('template', 'asa/cli/bgp.j2') }}
+!
 {# -------- #}
 {# Failover #}
 {# -------- #}

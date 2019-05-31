@@ -22,6 +22,21 @@ aaa authorization exec LOCAL auto-enable
 {# ---- #}
 {{ lookup('template', 'asa/cli/ospf.j2') }}
 !
+{# --- #}
+{# NAT #}
+{# --- #}
+{{ lookup('template', 'asa/cli/nat.j2') }}
+!
+{# ------------- #}
+{# Prefix_lists  #}
+{# ------------- #}
+{{ lookup('template', 'asa/cli/prefix-lists.j2') }}
+!
+{# ---- #}
+{# BGP  #}
+{# ---- #}
+{{ lookup('template', 'asa/cli/bgp.j2') }}
+!
 {# -------- #}
 {# Failover #}
 {# -------- #}

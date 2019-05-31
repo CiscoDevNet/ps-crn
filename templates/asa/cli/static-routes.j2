@@ -1,9 +1,13 @@
 {% if static_routes is defined %}
 {%  for vrf, value in static_routes.items() %}
 {%   for route in value|default([]) %}
-{%    for dest in route.fwd_list|default([]) %}
+{%    if vrf == "Null0" %}
+route {{ vrf }} {{ route.network|ipaddr('network') }} {{ route.network|ipaddr('netmask') }}
+{%    else %}
+{%     for dest in route.fwd_list|default([]) %}
 route {{ vrf }} {{ route.network|ipaddr('network') }} {{ route.network|ipaddr('netmask') }} {{ dest.fwd }} {{ dest.metric|default('') }}
-{%    endfor %}
+{%     endfor %}
+{%    endif %}
 {%   endfor %}
 {%  endfor %}
 {% endif %}

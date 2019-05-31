@@ -3,8 +3,8 @@ license smart
 {%   if licensing.feature is defined %}
  feature tier {{ licensing.feature }}
 {%   endif %}
-{%   if licensing.throughout is defined %}
- throughput level {{ licensing.throughout }}
+{%   if licensing.throughput is defined %}
+ throughput level {{ licensing.throughput }}
 {%   endif %}
 !
 {%   if licensing.token is defined %}
