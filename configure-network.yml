@@ -1,8 +1,10 @@
 - hosts: network:&virl_hosts
   connection: network_cli
   gather_facts: no
+  tags:
+    - debug
   vars:
-    config_template: "{{ ansible_network_os }}/virl.j2"
+    config_template: "{{ ansible_network_os }}/cli.j2"
   tasks:
   - name: Debug file
     tags:
@@ -12,12 +14,12 @@
       dest: "{{ inventory_hostname }}.cfg"
     delegate_to: localhost
 
-#  - name: Configure network device
-#    cli_config:
-#      config: "{{ lookup('template', config_template) }}"
-#    when: ansible_network_os != 'asa'
-#
-#  - name: Configure network device
-#    asa_config:
-#      lines: "{{ lookup('template', config_template) }}"
-#    when: ansible_network_os == 'asa'
+- hosts: network:&virl_hosts
+  connection: network_cli
+  gather_facts: no
+  vars:
+    config_template: "{{ ansible_network_os }}/cli.j2"
+  tasks:
+  - name: Configure network device
+    cli_config:
+      config: "{{ lookup('template', config_template) }}"

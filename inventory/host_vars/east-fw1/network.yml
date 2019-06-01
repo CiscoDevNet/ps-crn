@@ -43,11 +43,11 @@ interfaces:
       primary: 10.20.4.1/24
       standby: 10.20.4.2
 
-failover:
-  role: primary
-  ip: 10.255.255.1/30
-  peer_ip: 10.255.255.2/30
-  interface: GigabitEthernet0/0
+#failover:
+#  role: primary
+#  ip: 10.255.255.1/30
+#  peer_ip: 10.255.255.2/30
+#  interface: GigabitEthernet0/0
 
 static_routes:
   Null0:
@@ -157,6 +157,6 @@ router:
 
 dns_interface: management
 
-licensing:
-  feature: standard
-  throughput: 10G
+#licensing:
+#  feature: standard
+#  throughput: 10G

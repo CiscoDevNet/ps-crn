@@ -4,7 +4,7 @@
 {{ lookup('template', 'asa/cli/system.j2') }}
 !
 username {{ ansible_user }} password {{ ansible_password }}
-
+aaa authorization exec LOCAL auto-enable
 !
 {# ---------- #}
 {# Interfaces #}
@@ -14,11 +14,22 @@ username {{ ansible_user }} password {{ ansible_password }}
 {# ------------- #}
 {# Static Routes #}
 {# ------------- #}
+{{ lookup('template', 'asa/cli/static-routes.j2') }}
 !
 {# ---- #}
 {# OSPF #}
 {# ---- #}
 {{ lookup('template', 'asa/cli/ospf.j2') }}
+!
+{# --- #}
+{# NAT #}
+{# --- #}
+{{ lookup('template', 'asa/cli/nat.j2') }}
+!
+{# ------------- #}
+{# Prefix_lists  #}
+{# ------------- #}
+{{ lookup('template', 'asa/cli/prefix-lists.j2') }}
 !
 {# ---- #}
 {# BGP  #}
@@ -28,8 +39,8 @@ username {{ ansible_user }} password {{ ansible_password }}
 {# -------- #}
 {# Failover #}
 {# -------- #}
-{{ lookup('template', 'asa/cli/failover.j2') }}
-!
+{#{{ lookup('template', 'asa/cli/failover.j2') }}#}
+{#!#}
 same-security-traffic permit inter-interface
 !
 http server enable
