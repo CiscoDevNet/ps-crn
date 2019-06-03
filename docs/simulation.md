@@ -11,7 +11,7 @@ a dynamically generated VIRL topology.
 
 ## Topology
 
-![Alt Text](../images/ps-crn_topology.png)
+![Alt Text](images/virl_topology.png)
 
 _The default username/password is `admin/admin`_
 
