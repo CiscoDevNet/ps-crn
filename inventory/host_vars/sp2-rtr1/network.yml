@@ -21,7 +21,7 @@ router:
     neighbors:
       - id: 172.16.18.1
         remote_as: 65016
-    address-family:
+    address_family:
       global:
         ipv4:
           neighbors:

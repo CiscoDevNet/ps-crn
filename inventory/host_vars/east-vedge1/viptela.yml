@@ -11,3 +11,7 @@ viptela:
       'vpn0_default_gateway': 172.20.0.1
       'vpn10_ipv4_address': 10.20.3.3/24
       'vpn11_ipv4_address': 10.20.4.3/24
+      'vpn10_bgp_neighbor_address': 10.20.3.1
+      'vpn10_bgp_neighbor_remote_as': 65020
+      'vpn11_bgp_neighbor_address': 10.20.4.1
+      'vpn11_bgp_neighbor_remote_as': 65020

@@ -1,9 +1,4 @@
 interfaces:
-  Management0/0:
-    enabled: true
-    nameif: management
-    ip:
-      primary: dhcp
   GigabitEthernet0/0:
     enabled: true
   GigabitEthernet0/1:
@@ -42,63 +37,73 @@ interfaces:
       primary: 10.21.4.1/24
       standby: 10.21.4.2
 
-failover:
-  role: primary
-  ip: 10.255.255.1/30
-  peer_ip: 10.255.255.2/30
-  interface: GigabitEthernet0/0
+#failover:
+#  role: primary
+#  ip: 10.255.255.1/30
+#  peer_ip: 10.255.255.2/30
+#  interface: GigabitEthernet0/0
 
 static_routes:
-  management:
+  Null0:
     - network: 0.0.0.0/0
-      fwd_list:
-        - fwd: 192.133.178.1
+
+nat:
+  - inside_interface: corp
+    outside_interface: outside
+    source_type: dynamic
+    source_list: any
+  - inside_interface: guest
+    outside_interface: outside
+    source_type: dynamic
+    source_list: any
+
+prefix_lists:
+  corp:
+    - network: 0.0.0.0/0
+      action: permit
+    - network: 10.21.2.0/24
+      action: permit
+    - network: 172.21.1.0/24
+      action: permit
+  default-only:
+    - network: 0.0.0.0/0
+      action: permit
+  internet:
+    - network: 172.21.1.0/24
+      action: permit
 
 router:
-  ospf:
+  bgp:
     id: 65021
+    log_neighbor_changes: true
     router_id: 172.21.0.4
-    default_information_originate: true
-    networks:
-      - network: 172.21.0.0/24
-        area: 0
-      - network: 172.21.1.0/24
-        area: 1
-      - network: 10.21.2.0/24
-        area: 2
-      - network: 10.21.3.0/24
-        area: 10
-      - network: 10.21.4.0/24
-        area: 11
+    address_family:
+      ipv4:
+        neighbors:
+          - id: 172.21.0.2
+            remote_as: 65021
+            activate: true
+            prefix_lists:
+              out: internet
+          - id: 10.21.3.3
+            remote_as: 65025
+            activate: true
+            prefix_lists:
+              out: default-only
+          - id: 10.21.4.3
+            remote_as: 65025
+            activate: true
+            prefix_lists:
+              out: corp
+        networks:
+          - network: 172.21.0.0/16
+        redistribute:
+          connected:
+        auto_summary: no
+        synchronization: no
 
-    areas:
-      - number: 1
-        options:
-          - nssa
-          - no-redistribution
-          - default-information-originate
-          - no-summary
-      - number: 2
-        options:
-          - nssa
-          - no-redistribution
-          - default-information-originate
-          - no-summary
-      - number: 3
-        options:
-          - nssa
-          - no-redistribution
-          - default-information-originate
-          - no-summary
-      - number: 10
-        options:
-          - nssa
-          - no-redistribution
-          - default-information-originate
-          - no-summary
-      - number: 11
-        options:
-          - nssa
-          - no-redistribution
-          - default-information-originate
-          - no-summary
+dns_interface: management
+
+licensing:
+  feature: standard
+  throughput: 10G

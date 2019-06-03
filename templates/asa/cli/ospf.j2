@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: True, trim_blocks: True
 {% if router is defined %}
 {%  if router.ospf is defined %}
 router ospf {{ router.ospf.id }}

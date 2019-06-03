@@ -23,9 +23,3 @@
   - name: Configure network device
     cli_config:
       config: "{{ lookup('template', config_template) }}"
-    when: ansible_network_os != 'asa'
-
-  - name: Configure network device
-    asa_config:
-      lines: "{{ lookup('template', config_template) }}"
-    when: ansible_network_os == 'asa'

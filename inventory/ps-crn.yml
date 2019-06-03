@@ -2,12 +2,33 @@ all:
   hosts:
     localhost:
       ansible_python_interpreter: /Users/stevenca/Workspaces/ps-crn/ps-crn.venv/bin/python
+    jenkins:
   vars:
     ansible_user: admin
     ansible_password: admin
     ansible_network_os: ios
     netconf_template_os: ios
   children:
+    east-colo:
+      hosts:
+        east-rtr1:
+        east-rtr2:
+        east-fw1:
+        east-fw2:
+        east-vedge1:
+        east-vedge2:
+        vmanage1:
+        vbond1:
+        vsmart1:
+    west-colo:
+      hosts:
+        west-rtr1:
+        west-rtr2:
+        west-fw1:
+        west-fw2:
+        west-vedge1:
+        west-vedge2:
+        vsmart2:
     ha:
       hosts:
         east-rtr2:

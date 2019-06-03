@@ -10,7 +10,6 @@ interfaces:
       primary: 172.16.21.2/24
   GigabitEthernet3:
     enabled: true
-    vlan: 100
     ip:
       primary: 172.21.0.2/24
       standby:
@@ -18,8 +17,6 @@ interfaces:
         group: 0
         priority: 120
         delay: 300
-    ospf:
-      lls: disable
 
 static_routes:
   global:
@@ -35,30 +32,19 @@ router:
     neighbors:
       - id: 172.16.21.1
         remote_as: 65016
-    address-family:
+      - id: 172.21.0.4
+        remote_as: 65020
+    address_family:
       global:
         ipv4:
           neighbors:
             - id: 172.16.21.1
               activate: true
+            - id: 172.21.0.4
+              activate: true
+              next_hop_self: yes
           networks:
             - network: 172.21.0.0/16
-
-  ospf:
-    id: 65020
-    router_id: 172.21.0.2
-    redistribute:
-      - protocol: bgp
-        protocol_id: 65021
-        options:
-          - subnets
-    networks:
-      - network: 172.21.0.0/24
-        area: 0
-
-
-dns_interface: management
-
-licensing:
-  feature: standard
-  throughput: 10G
+          aggregate_address:
+            - network: 172.21.0.0/16
+              summary_only: yes

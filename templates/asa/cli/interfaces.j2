@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: True, trim_blocks: True
 {% for key, value in interfaces.items() %}
 interface {{ key }}
 {%  if value.vlan is defined %}

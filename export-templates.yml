@@ -32,5 +32,5 @@
 
     - name: Write out templates to {{ file }}
       copy:
-        content: "{{ viptela_templates | to_nice_yaml(indent=2, width=1337) }}"
+        content: "{{ viptela_templates }}"
         dest: "{{ file }}"

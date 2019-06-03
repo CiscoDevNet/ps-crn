@@ -17,8 +17,8 @@ interfaces:
         group: 0
         priority: 120
         delay: 300
-    ospf:
-      lls: disable
+#    ospf:
+#      lls: disable
 
 static_routes:
   global:

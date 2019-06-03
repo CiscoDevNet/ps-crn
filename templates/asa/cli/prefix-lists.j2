@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: True, trim_blocks: True
 {% if prefix_lists is defined %}
 {%  for list_name, list_data in prefix_lists.items() %}
 {%    for list_entry in list_data %}

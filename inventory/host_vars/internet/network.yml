@@ -52,7 +52,7 @@ router:
         remote_as: 65021
       - id: 172.16.21.3
         remote_as: 65021
-    address-family:
+    address_family:
       global:
         ipv4:
           neighbors:

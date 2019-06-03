@@ -46,21 +46,49 @@ This playbook will:
 
 ### Step 2
 
-Verify just the control plane by using the `check_control` tag:
+Configure and provision the vedges:
 
 ```shell
-ansible-playbook configure.yml --tags=check_control
+ansible-playbook configure.yml -e 'organization_name="<your org name>"' --tags=edge
 ```
 
-### Export Templates
+### Export templates
 ```yaml
 ansible-playbook export-templates.yml
 ```
-### Import Templates
+
+#### Extra Vars
+* `vmanage_ip`
+
+To specify the IP address of the vManage server from which to export the templates:
+```yaml
+ansible-playbook export-temapltes.yml -e vmanage_ip=1.2.3.4
+```
+
+### Import templates
 ```yaml
 ansible-playbook import-templates.yml
 ```
-### Apply the Templates
+
+#### Extra Vars
+* `vmanage_ip`
+
+To specify the IP address of the vManage server into which to import the templates:
+```yaml
+ansible-playbook import-templates.yml -e vmanage_ip=1.2.3.4
+```
+
+### Attach templates to devices
 ```yaml
 ansible-playbook attach_templates.yml
+```
+
+To attach a template to a limited set of devices:
+```yaml
+ansible-playbook attach_templates.yml --limit=east-rtr1,west-rtr1
+```
+
+### Detach templates from devices
+```yaml
+ansible-playbook detach_templates.yml
 ```

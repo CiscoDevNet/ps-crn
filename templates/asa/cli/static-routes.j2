@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: True, trim_blocks: True
 {% if static_routes is defined %}
 {%  for vrf, value in static_routes.items() %}
 {%   for route in value|default([]) %}

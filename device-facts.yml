@@ -12,11 +12,11 @@
         password: "{{ ansible_password }}"
       register: device_facts
       delegate_to: localhost
-#      until: (all_vedges | difference(device_facts.vedges | selectattr('site-id','defined') | map(attribute='host-name')) | list | length) == 0
-#      retries: 60
-#      delay: 10
-#      vars:
-#        all_vedges: "{{ groups.viptela_vedge | intersect(groups.virl_hosts) }}"
+      until: (all_vedges | difference(device_facts.vedges | selectattr('site-id','defined') | map(attribute='host-name')) | list | length) == 0
+      retries: 60
+      delay: 10
+      vars:
+        all_vedges: "{{ groups.viptela_vedge | intersect(groups.virl_hosts) }}"
 
     - debug:
         var: device_facts

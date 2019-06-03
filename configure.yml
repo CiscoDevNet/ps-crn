@@ -1,11 +1,11 @@
 - name: Check playbook reqiurements
   hosts: localhost
+  connection: network_cli
   tags:
     - control
     - edge
     - CA
   any_errors_fatal: true
-  connection: network_cli
   gather_facts: no
   tasks:
     - name: Check for the license file
@@ -25,6 +25,7 @@
 
 - name: Check initial topology connectivity
   hosts: internet
+  connection: network_cli
   tags:
     - check_control
     - check_all
@@ -32,7 +33,6 @@
     - edge
     - CA
   any_errors_fatal: true
-  connection: network_cli
   gather_facts: no
   tasks:
     - name: Ping outside interface of Internet routers
@@ -49,6 +49,7 @@
 
 - name: Verify that vManage is fully operational
   hosts: localhost
+  connection: local
   tags:
     - check_control
     - check_all
@@ -78,6 +79,7 @@
 
 - name: Create local CA
   hosts: localhost
+  connection: local
   tags:
     - control
     - CA
@@ -108,16 +110,16 @@
         privatekey_path: "{{ viptela_cert_dir }}/myCA.key"
         privatekey_passphrase: "{{ viptela_CA_passphrase }}"
         csr_path: "{{ viptela_cert_dir }}/myCA.csr"
-        select_crypto_backend: pyopenssl
+        # select_crypto_backend: pyopenssl
         provider: selfsigned
 
 - name: Configuring Viptela components
   hosts: viptela_control:&virl_hosts
+  connection: netconf
   tags:
     - control
     - netconf
   any_errors_fatal: true
-  connection: netconf
   gather_facts: no
   tasks:
     - name: Push NETCONF template
@@ -126,13 +128,13 @@
 
 - name: Check connetivty to Viptela control plane
   hosts: internet_routers:&virl_hosts
+  connection: network_cli
   tags:
     - control
     - edge
     - check_control
     - check_all
   any_errors_fatal: true
-  connection: network_cli
   gather_facts: no
   tasks:
     - ios_ping:
@@ -141,6 +143,7 @@
 
 - name: Verify that vManage is fully operational
   hosts: localhost
+  connection: local
   tags:
     - check_control
     - check_all
@@ -193,6 +196,7 @@
 
 - name: Configure vmanage
   hosts: vmanage1
+  connection: local
   roles:
     - ansible-viptela
   tags:
@@ -272,7 +276,7 @@
         ownca_path: "{{ viptela_cert_dir }}/myCA.pem"
         ownca_privatekey_path: "{{ viptela_cert_dir }}/myCA.key"
         ownca_privatekey_passphrase: "{{ viptela_CA_passphrase }}"
-        select_crypto_backend: pyopenssl
+        # select_crypto_backend: pyopenssl
       loop: "{{ groups.viptela_control }}"
       delegate_to: localhost
 
@@ -294,11 +298,11 @@
 
 - name: Configuring vEdges
   hosts: viptela_vedge:&virl_hosts
+  connection: netconf
   tags:
     - edge
     - netconf
   any_errors_fatal: true
-  connection: netconf
   gather_facts: no
   tasks:
     - name: Push NETCONF template

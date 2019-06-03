@@ -1,10 +1,10 @@
 interfaces:
-  Management0/0:
-    enabled: true
-    # management_only: yes
-    nameif: management
-    ip:
-      primary: dhcp
+#  Management0/0:
+#    enabled: true
+#    # management_only: yes
+#    nameif: management
+#    ip:
+#      primary: dhcp
   GigabitEthernet0/0:
     enabled: true
   GigabitEthernet0/1:
@@ -75,14 +75,14 @@ prefix_lists:
     - network: 0.0.0.0/0
       action: permit
   internet:
-    - network: 0.0.0.0/0
+    - network: 172.20.1.0/24
       action: permit
 
 router:
   bgp:
     id: 65020
     log_neighbor_changes: true
-    router_id: 172.16.20.2
+    router_id: 172.20.0.4
     address_family:
       ipv4:
         neighbors:
@@ -157,6 +157,6 @@ router:
 
 dns_interface: management
 
-#licensing:
-#  feature: standard
-#  throughput: 10G
+licensing:
+  feature: standard
+  throughput: 10G
