@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y python3-pip openssh-client curl sshpass
 
 # Install requirements.
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install --requirement /tmp/requirements.txt
+RUN pip3 install --requirement /tmp/requirements.txt
 
 # Define working directory.
 ENV ANSIBLE_GATHERING smart
