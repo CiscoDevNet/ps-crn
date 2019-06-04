@@ -33,7 +33,7 @@ router:
       - id: 172.16.21.1
         remote_as: 65016
       - id: 172.21.0.4
-        remote_as: 65020
+        remote_as: 65021
     address_family:
       global:
         ipv4:

@@ -1,0 +1,19 @@
+- name: Get policy list facts
+  hosts: localhost
+  roles:
+    - ansible-viptela
+  vars:
+    vmanage_host: "{{ groups.vmanage_hosts | first }}"
+    vmanage_ip: "{{ hostvars[vmanage_host].ansible_host }}"
+    file: vmanage_policy_lists.yml
+  gather_facts: no
+  tasks:
+    - name: Get policy list facts
+      vmanage_policy_list_facts:
+        user: "{{ ansible_user }}"
+        host: "{{ vmanage_ip }}"
+        password: "{{ ansible_password }}"
+      register: policy_facts
+
+    - debug:
+        var: policy_facts

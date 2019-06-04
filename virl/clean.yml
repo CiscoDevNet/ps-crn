@@ -1,3 +1,13 @@
+- name: Configure licensing
+  hosts: firewall:&virl_hosts
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Deregister from smart account
+      asa_command:
+        commands:
+          - "license smart deregister"
+
 - hosts: localhost
   connection: local
   gather_facts: no

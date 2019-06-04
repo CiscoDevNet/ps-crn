@@ -1,13 +1,10 @@
 all:
-  hosts:
-    localhost:
-      ansible_python_interpreter: /Users/stevenca/Workspaces/ps-crn/ps-crn.venv/bin/python
-    jenkins:
   vars:
     ansible_user: admin
     ansible_password: admin
     ansible_network_os: ios
     netconf_template_os: ios
+    ansible_python_interpreter: /Users/stevenca/Workspaces/ps-crn/ps-crn.venv/bin/python
   children:
     east-colo:
       hosts:

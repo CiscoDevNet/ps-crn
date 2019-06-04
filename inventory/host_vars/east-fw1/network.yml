@@ -101,8 +101,9 @@ router:
             activate: true
             prefix_lists:
               out: corp
-        networks:
-          - network: 172.20.0.0/16
+#        networks:
+#          - network: 172.20.0.0/16
+#          - network: 0.0.0.0/0
         redistribute:
           connected:
         auto_summary: no
