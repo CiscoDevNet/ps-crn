@@ -1,0 +1,26 @@
+- name: Configure licensing
+  hosts: firewall:&virl_hosts
+  gather_facts: no
+  connection: network_cli
+  vars:
+    licensing:
+      token: ZjFkNzAzNmMtMmI3Ni00OTA3LTlhNTktMjgzODA4YTQyODMxLTE1ODYzMTQ5%0AMDEwMTN8MzZDaUNFczB4Z3hpbTI0M0hPUUUxckNpZFprZnpVZ2lNTUErdEk0%0Acmxxbz0%3D%0A
+  tasks:
+    - name: Register to smart account
+      asa_command:
+        commands:
+          - crypto ca trustpool import url http://www.cisco.com/security/pki/trs/ios_core.p7b
+          - "license smart register idtoken {{ licensing.token }}"
+
+    - name: Save configuration
+      asa_config:
+        save: yes
+
+    - name: Waiting for successful registration
+      asa_command:
+        commands:
+          - show license status
+      register: license_status
+      until: "'AUTHORIZED' in license_status.stdout[0]"
+      retries: 60
+      delay: 10

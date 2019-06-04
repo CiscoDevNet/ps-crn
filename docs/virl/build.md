@@ -54,3 +54,15 @@ ansible-playbook build.yml
 This playbook will:
 * Launch the topology file
 * Wait until they show as reachable in VIRL
+
+#### Extra Vars
+* `topo_name`: Set the name of the topo
+
+```yaml
+ansible-playbook build.yml -e topo_name=test1
+```
+
+### License the VNFs in the environment:
+```yaml
+ansible-playbook configure-licensing.yml
+```

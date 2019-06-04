@@ -44,13 +44,59 @@ This playbook will:
 * Create CSR, sign CSR, and install certificate
 * Add vbond and vsmart to vmanage
 
-### Step 2
-
-Configure and provision the vedges:
+### Step 2: Configure and provision the vedges:
 
 ```shell
 ansible-playbook configure.yml -e 'organization_name="<your org name>"' --tags=edge
 ```
+
+#### Wait for the vEdges to sync:
+
+```shell
+ansible-playbook waitfor-sync.yml
+```
+
+### Step 3: Import templates
+
+```shell
+ansible-playbook import-templates.yml
+```
+#### Extra Vars
+* `vmanage_ip`
+
+To specify the IP address of the vManage server into which to import the templates:
+```yaml
+ansible-playbook import-templates.yml -e vmanage_ip=1.2.3.4
+```
+
+#### Attach templates to devices
+```yaml
+ansible-playbook attach_templates.yml
+```
+
+To attach a template to a limited set of devices:
+```yaml
+ansible-playbook attach_templates.yml --limit=east-rtr1,west-rtr1
+```
+
+### Step 4: Import Policy
+
+```shell
+ansible-playbook import-policy.yml
+```
+#### Extra Vars
+* `vmanage_ip`
+
+To specify the IP address of the vManage server into which to import the templates:
+```yaml
+ansible-playbook import-policy.yml -e vmanage_ip=1.2.3.4
+```
+
+#### Activate Central Policy
+```yaml
+ansible-playbook activate-central-policy.yml
+```
+
 
 ### Export templates
 ```yaml
@@ -63,29 +109,6 @@ ansible-playbook export-templates.yml
 To specify the IP address of the vManage server from which to export the templates:
 ```yaml
 ansible-playbook export-temapltes.yml -e vmanage_ip=1.2.3.4
-```
-
-### Import templates
-```yaml
-ansible-playbook import-templates.yml
-```
-
-#### Extra Vars
-* `vmanage_ip`
-
-To specify the IP address of the vManage server into which to import the templates:
-```yaml
-ansible-playbook import-templates.yml -e vmanage_ip=1.2.3.4
-```
-
-### Attach templates to devices
-```yaml
-ansible-playbook attach_templates.yml
-```
-
-To attach a template to a limited set of devices:
-```yaml
-ansible-playbook attach_templates.yml --limit=east-rtr1,west-rtr1
 ```
 
 ### Detach templates from devices

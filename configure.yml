@@ -173,8 +173,6 @@
 
 - name: Copy CA to controllers
   hosts: vbond1:vsmart1
-  roles:
-    - ansible-viptela
   tags:
     - control
     - debug

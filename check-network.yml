@@ -1,0 +1,34 @@
+- hosts: router
+  connection: network_cli
+  gather_facts: no
+  roles:
+    - ansible-pyats
+  tasks:
+  - include_role:
+      name: ansible-pyats
+      tasks_from: compare
+    vars:
+      command: show ntp associations
+      snapshot_file: "{{ inventory_hostname }}_ntp.json"
+
+  - debug:
+      msg: "{{ diff_output }}"
+
+#  - debug:
+#      var: parsed_output
+
+#  - set_fact:
+#      output1: "{{ parsed_output }}"
+#
+#  - cli_config:
+#      config: ntp server 1.2.3.4
+#
+#  - include_role:
+#      name: ansible-pyats
+#      tasks_from: parse_command
+#    vars:
+#      command: show ntp associations
+#
+#  - set_fact:
+#      diff: "{{ parsed_output | genie_diff(output1) }}"
+
