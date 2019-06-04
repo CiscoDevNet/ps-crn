@@ -22,8 +22,6 @@ pipeline {
            steps {
                 echo 'Running build.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, extras: "-e virl_tag=jenkins", playbook: 'build.yml'
-           }
-           steps {
                 echo 'Configure licensing...'
                 ansiblePlaybook disableHostKeyChecking: true, playbook: 'configure-licensing.yml'
            }
