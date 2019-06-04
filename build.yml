@@ -29,8 +29,6 @@
   tags:
     - config
   tasks:
-    - import_role:
-        name: cisco-templates
     - set_fact:
         day0_config: "{{ lookup('template', virl.config_template) }}"
       when: virl.config_template is defined
