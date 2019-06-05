@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     options {
       disableConcurrentBuilds()
       lock resource: 'viptela-workshop-testbed'
