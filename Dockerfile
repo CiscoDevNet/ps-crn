@@ -1,11 +1,11 @@
 # Use an official Python runtime as a parent image
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y python3-pip openssh-client curl sshpass
+RUN apt-get update && apt-get install -y python-pip openssh-client curl sshpass
 
 # Install requirements.
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --requirement /tmp/requirements.txt
+RUN pip install --requirement /tmp/requirements.txt
 
 # Define working directory.
 ENV ANSIBLE_GATHERING smart
