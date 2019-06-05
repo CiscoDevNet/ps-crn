@@ -4,9 +4,6 @@ all:
     ansible_password: admin
     ansible_network_os: ios
     netconf_template_os: ios
-  hosts:
-    localhost:
-      ansible_python_interpreter: /Users/stevenca/Workspaces/ps-crn/ps-crn.venv/bin/python
   children:
     east-colo:
       hosts:
