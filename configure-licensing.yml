@@ -21,7 +21,7 @@
           command: "license smart register idtoken {{ licensing.token }}"
 
       - name: Save configuration
-        cli_config:
+        asa_config:
           save: yes
 
       - name: Waiting for successful registration
