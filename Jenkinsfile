@@ -1,10 +1,4 @@
 pipeline {
-    agent {
-        dockerfile {
-            filename 'Dockerfile'
-            args  '-v /etc/passwd:/etc/passwd'
-        }
-    }
     options {
       disableConcurrentBuilds()
       lock resource: 'viptela-workshop-testbed'

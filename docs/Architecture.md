@@ -121,6 +121,16 @@ compute and storage platform for running Shared Services in the CoLo.
 * Monitoring (Stealth Watch)
 * Secure Comms (SD-WAN)
 
+## Use Cases:
+- RTBH
+- App RTBH
+- Inter-VPN Policy
+- Cloud OnRamp for SaaS
+- Regionalized Routing Optimization
+- Hub-and-Spoke Routing
+- DIA
+
+
 
 ## References
 * [Cisco CVD: SW-WAN Design Guide](https://www.cisco.com/c/dam/en/us/td/docs/solutions/CVD/SDWAN/CVD-SD-WAN-Design-2018OCT.pdf)
