@@ -18,6 +18,12 @@ pipeline {
         DEFAULT_LOCAL_TMP = "${WORKSPACE}/ansible"
     }
     stages {
+        stage('Prep Environment') {
+           steps {
+                echo 'Running build.yml...'
+                sh 'cp ansible.cfg.docker ansible.cfg'
+           }
+        }
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
@@ -48,9 +54,9 @@ pipeline {
                 ansiblePlaybook disableHostKeyChecking: true, playbook: 'activate-policy.yml'
            }
         }
-        stage('Validate') {
+        stage('Running Tests') {
            steps {
-                echo 'Loading Templates...'
+                echo 'Check SD-WAN...'
                 ansiblePlaybook disableHostKeyChecking: true, playbook: 'check-sdwan.yml'
            }
         }
