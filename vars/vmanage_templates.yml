@@ -469,6 +469,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673752552
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: '0'
         host:
             vipObjectType: tree
             vipPrimaryKey:
@@ -515,10 +519,6 @@ feature_templates:
             vipObjectType: object
             vipType: ignore
             vipVariableName: vpn_name
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: '0'
     templateDescription: vsmart_vpn0
     templateId: b6f5974e-2fac-431c-b8dc-e1dbf6bd9340
     templateMinVersion: 15.0.0
@@ -1000,6 +1000,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673752785
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: eth0
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -1067,11 +1072,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: eth0
-            vipVariableName: vpn_if_name
         ip:
             dhcp-client:
                 vipObjectType: object
@@ -1211,6 +1211,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673752902
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: ge0/0
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -1278,11 +1283,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: ge0/0
-            vipVariableName: vpn_if_name
         ip:
             address:
                 vipObjectType: object
@@ -1590,6 +1590,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753012
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: ge0/2
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -1657,11 +1662,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: ge0/2
-            vipVariableName: vpn_if_name
         ip:
             address:
                 vipObjectType: object
@@ -1798,6 +1798,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753131
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: eth0
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -1865,11 +1870,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: eth0
-            vipVariableName: vpn_if_name
         ip:
             dhcp-client:
                 vipObjectType: object
@@ -2011,6 +2011,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753229
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: 512
         ecmp-hash-key:
             layer4:
                 vipObjectType: object
@@ -2056,10 +2060,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_tcp_optimization
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: 512
     templateDescription: Management VPN
     templateId: a3cafe77-505e-42ce-97f2-0e36c2c0ecb5
     templateMinVersion: 15.0.0
@@ -2078,6 +2078,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753337
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: 11
         ecmp-hash-key:
             layer4:
                 vipObjectType: object
@@ -2128,10 +2132,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_tcp_optimization
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: 11
     templateDescription: vpn11
     templateId: 2e2628b1-49f0-4c2b-8671-392530fab201
     templateMinVersion: 15.0.0
@@ -2150,6 +2150,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753440
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: 0
         ecmp-hash-key:
             layer4:
                 vipObjectType: object
@@ -2227,10 +2231,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_tcp_optimization
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: 0
     templateDescription: vedge_vpn0
     templateId: 2be0056d-30a2-44cc-9270-4dda22c1def6
     templateMinVersion: 15.0.0
@@ -2249,6 +2249,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753561
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: '512'
         host:
             vipObjectType: tree
             vipPrimaryKey:
@@ -2262,10 +2266,6 @@ feature_templates:
             vipObjectType: object
             vipType: ignore
             vipVariableName: vpn_name
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: '512'
     templateDescription: vsmart_vpn512
     templateId: eaae926a-6ccf-4faf-a3a8-605c2dbd40ae
     templateMinVersion: 15.0.0
@@ -2284,6 +2284,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753677
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: eth1
+            vipVariableName: vpn_if_name
         arp:
             ip:
                 vipObjectType: tree
@@ -2317,11 +2322,6 @@ feature_templates:
             vipType: ignore
             vipValue: autoneg
             vipVariableName: vpn_if_flow_control
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: eth1
-            vipVariableName: vpn_if_name
         ip:
             address:
                 vipObjectType: object
@@ -2454,6 +2454,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753797
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: ge0/1
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -2521,11 +2526,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: ge0/1
-            vipVariableName: vpn_if_name
         ip:
             address:
                 vipObjectType: object
@@ -2661,6 +2661,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673753921
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: ge0/0
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -2728,11 +2733,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: ge0/0
-            vipVariableName: vpn_if_name
         ip:
             address:
                 vipObjectType: object
@@ -3040,6 +3040,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673754035
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: 10
         ecmp-hash-key:
             layer4:
                 vipObjectType: object
@@ -3090,10 +3094,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_tcp_optimization
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: 10
     templateDescription: vpn10
     templateId: 929f5933-2047-4108-a5b3-c40a3efa585f
     templateMinVersion: 15.0.0
@@ -3112,6 +3112,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673754139
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: eth0
+            vipVariableName: vpn_if_name
         arp:
             ip:
                 vipObjectType: tree
@@ -3145,11 +3150,6 @@ feature_templates:
             vipType: ignore
             vipValue: autoneg
             vipVariableName: vpn_if_flow_control
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: eth0
-            vipVariableName: vpn_if_name
         ip:
             dhcp-client:
                 vipObjectType: object
@@ -3213,6 +3213,10 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673754256
     templateDefinition:
+        vpn-id:
+            vipObjectType: object
+            vipType: constant
+            vipValue: 512
         ecmp-hash-key:
             layer4:
                 vipObjectType: object
@@ -3257,10 +3261,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_tcp_optimization
-        vpn-id:
-            vipObjectType: object
-            vipType: constant
-            vipValue: 512
     templateDescription: vedge_vpn512
     templateId: 0b467857-cb18-45dd-b249-bf5a63838b20
     templateMinVersion: 15.0.0
@@ -3494,6 +3494,11 @@ feature_templates:
     lastUpdatedBy: admin
     lastUpdatedOn: 1559673754467
     templateDefinition:
+        if-name:
+            vipObjectType: object
+            vipType: constant
+            vipValue: loopback0
+            vipVariableName: vpn_if_name
         access-list:
             vipObjectType: tree
             vipPrimaryKey:
@@ -3561,11 +3566,6 @@ feature_templates:
             vipType: ignore
             vipValue: 'false'
             vipVariableName: vpn_if_icmp_redirect_disable
-        if-name:
-            vipObjectType: object
-            vipType: constant
-            vipValue: loopback0
-            vipVariableName: vpn_if_name
         ip:
             address:
                 vipObjectType: object
