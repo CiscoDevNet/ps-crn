@@ -1,4 +1,4 @@
-- name: Bootstrap vEdges
+- name: Detach Template
   hosts: viptela:&virl_hosts
   connection: local
   gather_facts: no

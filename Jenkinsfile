@@ -24,6 +24,13 @@ pipeline {
                 sh 'cp ansible.cfg.docker ansible.cfg'
            }
         }
+        stage('Clean Previous Deployment') {
+           steps {
+                echo 'Running build.yml...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
+                cleanWs()
+           }
+        }
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
