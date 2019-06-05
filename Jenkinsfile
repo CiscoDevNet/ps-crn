@@ -55,11 +55,13 @@ pipeline {
            }
         }
     }
+/*
     post {
         always {
             ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
             cleanWs()
         }
     }
+*/
 }
 
