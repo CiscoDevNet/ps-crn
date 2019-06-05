@@ -70,4 +70,4 @@ vmanage_ping_tests:
   - dst_ip: 172.18.0.10
     vedge: site2-vedge1
     vpn: 11
-    pass: yes
+    pass: no
