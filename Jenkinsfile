@@ -36,6 +36,22 @@ pipeline {
                 withCredentials([file(credentialsId: 'viptela-serial-file', variable: 'VIPTELA_SERIAL_FILE')]) {
                     ansiblePlaybook disableHostKeyChecking: true, extras: '-e virl_tag=jenkins -e \'organization_name="${VIPTELA_ORG}"\' -e serial_number_file=${VIPTELA_SERIAL_FILE} -e viptela_cert_dir=${WORKSPACE}/myCA', tags: 'edge', playbook: 'configure.yml'
                 }
+                echo 'Loading Templates...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'import-templates.yml'
+                echo 'Waiting for vEdges to Sync...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'waitfor-sync.yml'
+                echo 'Attaching Templates...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'attach-template.yml'
+                echo 'Loading Policy...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'import-policy.yml'
+                echo 'Activating Policy...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'activate-policy.yml'
+           }
+        }
+        stage('Validate') {
+           steps {
+                echo 'Loading Templates...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'check-sdwan.yml'
            }
         }
     }
