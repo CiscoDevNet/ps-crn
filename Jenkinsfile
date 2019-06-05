@@ -28,7 +28,6 @@ pipeline {
            steps {
                 echo 'Running build.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
-                cleanWs()
            }
         }
         stage('Build VIRL Topology') {
