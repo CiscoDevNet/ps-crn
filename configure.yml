@@ -38,14 +38,14 @@
     - name: Ping outside interface of Internet routers
       ios_ping:
         dest: "{{ hostvars[item].interfaces.GigabitEthernet2.ip.primary | ipaddr('address') }}"
-        count: 3
       loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
+      retries: 3
 
     - name: Ping inside interface of Internet routers
       ios_ping:
         dest: "{{ hostvars[item].interfaces.GigabitEthernet3.ip.primary | ipaddr('address') }}"
-        count: 3
       loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
+      retries: 3
 
 - name: Verify that vManage is fully operational
   hosts: localhost
@@ -140,6 +140,7 @@
     - ios_ping:
         dest: "{{ hostvars[item].vpn_instances[0].interfaces[0].ip.address | ipaddr('address') }}"
       loop: "{{ groups.viptela_control }}"
+      retries: 3
 
 - name: Verify that vManage is fully operational
   hosts: localhost
@@ -321,6 +322,7 @@
         dest: "{{ hostvars[item].vpn_instances[0].interfaces[0].ip.address | ipaddr('address') }}"
       loop: "{{ groups.viptela_vedge | intersect(groups.virl_hosts) }}"
       when: hostvars[item].vpn_instances is defined
+      retries: 3
 
 - name: Bootstrap vEdges
   hosts: viptela_vedge:&virl_hosts
