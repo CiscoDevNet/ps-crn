@@ -14,6 +14,7 @@ pipeline {
         VIRL_PASSWORD = credentials('cpn-virl-password')
         VIRL_HOST = credentials('cpn-virl-host')
         VIPTELA_ORG = credentials('viptela-org')
+        LICENSE_TOKEN = credentials('license-token')
         HOME = "${WORKSPACE}"
         DEFAULT_LOCAL_TMP = "${WORKSPACE}/ansible"
     }
@@ -37,7 +38,7 @@ pipeline {
                 echo 'Running build.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, extras: "-e virl_tag=jenkins", playbook: 'build.yml'
                 echo 'Configure licensing...'
-                ansiblePlaybook disableHostKeyChecking: true, playbook: 'configure-licensing.yml'
+                ansiblePlaybook disableHostKeyChecking: true, extras: "-e license_token=${LICENSE_TOKEN}", playbook: 'configure-licensing.yml'
            }
         }
         stage('Configure SD-WAN Fabric') {
