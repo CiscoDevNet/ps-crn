@@ -1,5 +1,4 @@
 viptela:
-  org: "{{ organization_name }}"
   site_id: 100
   system_ip: 10.255.100.2
   vbond:
