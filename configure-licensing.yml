@@ -22,7 +22,7 @@
 
       - name: Register to smart account
         cli_command:
-          command: "license smart register idtoken {{ licensing.token }}"
+          command: "license smart register idtoken {{ license_token }}"
 
       - name: Save configuration
         asa_config:
