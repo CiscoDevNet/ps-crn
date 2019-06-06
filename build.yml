@@ -41,7 +41,6 @@
     topo_file: topo.virl
     topo_name: "{{ topo_file.split('.')[0] }}"
     topo_id: "{{ lookup('password', '/dev/null length=4 chars=ascii_letters') }}"
-    session: "{{ virl_tag }}_{{ topo_name }}_{{ topo_id }}"
   tasks:
     - name: Check for existing simulation
       stat:

@@ -5,9 +5,10 @@ a dynamically generated VIRL topology.
 
 ## Requirements
 
-* [virlutils](https://github.com/CiscoDevNet/virlutils)
 * [ansible-viptela](https://github.com/CiscoDevNet/ansible-viptela)
+* [virlutils](https://github.com/CiscoDevNet/virlutils)(optional)
 * A Viptela license file and the Organization name associated with that license file.  The Organization name should be provided where you see: `<your org name>`
+* A Cisco Smart License token that point to an account with ASAv licensing
 
 ## Topology
 
