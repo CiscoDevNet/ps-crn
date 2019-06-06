@@ -48,7 +48,7 @@
     failed_when: false
     delegate_to: localhost
     vars:
-      sim_id: "{{ lookup('file', virl_sim_file, errors='ignore') }}"
+      sim_id: "{{ session | default(lookup('file', virl_sim_file, errors='ignore')) }}"
 
   - name: Delete Simulation ID File
     file:
