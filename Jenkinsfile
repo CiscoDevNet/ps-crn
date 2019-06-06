@@ -23,7 +23,7 @@ pipeline {
         stage('Clean Previous Deployment') {
            steps {
                 echo 'Running build.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, extras: "-e session=jenkins_ps-crn1", playbook: 'clean.yml'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
                 cleanWs()
            }
         }
@@ -50,7 +50,7 @@ pipeline {
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, extras: '-e virl_tag=jenkins -e \'organization_name="${VIPTELA_ORG}"\'', playbook: 'build.yml'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'build.yml'
                 echo 'Configure licensing...'
                 ansiblePlaybook disableHostKeyChecking: true, extras: "-e license_token=${LICENSE_TOKEN}", playbook: 'configure-licensing.yml'
            }
