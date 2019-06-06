@@ -7,7 +7,7 @@ pipeline {
     }
     options {
       disableConcurrentBuilds()
-      lock resource: 'viptela-workshop-testbed'
+      lock resource: 'jenkins_ps-crn1'
     }
     environment {
         VIRL_USERNAME = credentials('cpn-virl-username')
@@ -33,7 +33,7 @@ pipeline {
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, extras: "-e virl_tag=jenkins", playbook: 'build.yml'
+                ansiblePlaybook disableHostKeyChecking: true, extras: "-e session=jenkins_ps-crn1", playbook: 'build.yml'
                 echo 'Configure licensing...'
                 ansiblePlaybook disableHostKeyChecking: true, playbook: 'configure-licensing.yml'
            }
