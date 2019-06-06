@@ -7,7 +7,7 @@ pipeline {
     }
     options {
       disableConcurrentBuilds()
-      lock resource: 'jenkins_ps-crn1'
+      lock resource: 'jenkins_ps-crn_hourly'
     }
     environment {
         VIRL_USERNAME = credentials('cpn-virl-username')
