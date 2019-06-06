@@ -19,20 +19,34 @@ pipeline {
         DEFAULT_LOCAL_TMP = "${WORKSPACE}/ansible"
     }
     stages {
-        stage('Prep Environment') {
-           steps {
-                echo 'Running build.yml...'
-                sh 'cp ansible.cfg.docker ansible.cfg'
-           }
-        }
-/*
         stage('Clean Previous Deployment') {
            steps {
                 echo 'Running build.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, extras: "-e session=jenkins_ps-crn1", playbook: 'clean.yml'
+                cleanWs()
            }
         }
-*/
+        stage('Prep New Environment') {
+            checkout([
+                $class: 'GitSCM',
+                branches: [[name: '*/master']],
+                doGenerateSubmoduleConfigurations: false,
+                extensions: [
+                    [$class: 'SubmoduleOption',
+                    disableSubmodules: false,
+                    parentCredentials: false,
+                    recursiveSubmodules: true,
+                    reference: '',
+                    trackingSubmodules: false]
+                ],
+                submoduleCfg: [],
+                userRemoteConfigs: [[url: 'https://github.com/CiscoDevNet/ps-crn']]
+            ])
+            steps {
+                echo 'Running build.yml...'
+                sh 'cp ansible.cfg.docker ansible.cfg'
+            }
+        }
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
@@ -70,11 +84,13 @@ pipeline {
            }
         }
     }
+/*
     post {
         always {
             ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
             cleanWs()
         }
     }
+*/
 }
 
