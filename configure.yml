@@ -39,13 +39,19 @@
       ios_ping:
         dest: "{{ hostvars[item].interfaces.GigabitEthernet2.ip.primary | ipaddr('address') }}"
       loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
+      register: result
       retries: 3
+      delay: 10
+      until: result is not failed
 
     - name: Ping inside interface of Internet routers
       ios_ping:
         dest: "{{ hostvars[item].interfaces.GigabitEthernet3.ip.primary | ipaddr('address') }}"
       loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
+      register: result
       retries: 3
+      delay: 10
+      until: result is not failed
 
 - name: Verify that vManage is fully operational
   hosts: localhost
@@ -140,7 +146,10 @@
     - ios_ping:
         dest: "{{ hostvars[item].vpn_instances[0].interfaces[0].ip.address | ipaddr('address') }}"
       loop: "{{ groups.viptela_control }}"
+      register: result
       retries: 3
+      delay: 10
+      until: result is not failed
 
 - name: Verify that vManage is fully operational
   hosts: localhost
@@ -322,7 +331,10 @@
         dest: "{{ hostvars[item].vpn_instances[0].interfaces[0].ip.address | ipaddr('address') }}"
       loop: "{{ groups.viptela_vedge | intersect(groups.virl_hosts) }}"
       when: hostvars[item].vpn_instances is defined
+      register: result
       retries: 3
+      delay: 10
+      until: result is not failed
 
 - name: Bootstrap vEdges
   hosts: viptela_vedge:&virl_hosts
@@ -361,21 +373,3 @@
         return_content: yes
       register: uri_results
       delegate_to: localhost
-
-#- name: Checking connectivity between end hosts
-#  hosts: clients
-#  tags:
-#    - check_edge
-#    - check_all
-#    - edge
-#  any_errors_fatal: true
-#  gather_facts: no
-#  tasks:
-#    - wait_for:
-#        port: 22
-#        host: "{{ item }}"
-#      loop:
-#        - 10.0.1.10
-#        - 10.100.1.10
-#      tags:
-#        - configured
