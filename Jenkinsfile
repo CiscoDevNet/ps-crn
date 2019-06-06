@@ -26,7 +26,7 @@ pipeline {
                 cleanWs()
            }
         }
-        stage('Prep New Environment') {
+        stage('Checkout Code') {
             checkout([
                 $class: 'GitSCM',
                 branches: [[name: '*/master']],
@@ -42,6 +42,7 @@ pipeline {
                 submoduleCfg: [],
                 userRemoteConfigs: [[url: 'https://github.com/CiscoDevNet/ps-crn']]
             ])
+        stage('Prep New Environment') {
             steps {
                 echo 'Running build.yml...'
                 sh 'cp ansible.cfg.docker ansible.cfg'
