@@ -35,7 +35,7 @@ pipeline {
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, extras: "-e session=jenkins_ps-crn1", playbook: 'build.yml'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'build.yml'
                 echo 'Configure licensing...'
                 ansiblePlaybook disableHostKeyChecking: true, playbook: 'configure-licensing.yml'
            }
