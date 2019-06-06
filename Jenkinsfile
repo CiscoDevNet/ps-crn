@@ -24,12 +24,14 @@ pipeline {
                 sh 'cp ansible.cfg.docker ansible.cfg'
            }
         }
+/*
         stage('Clean Previous Deployment') {
            steps {
                 echo 'Running build.yml...'
                 ansiblePlaybook disableHostKeyChecking: true, extras: "-e session=jenkins_ps-crn1", playbook: 'clean.yml'
            }
         }
+*/
         stage('Build VIRL Topology') {
            steps {
                 echo 'Running build.yml...'
@@ -67,13 +69,11 @@ pipeline {
            }
         }
     }
-/*
     post {
         always {
             ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
             cleanWs()
         }
     }
-*/
 }
 
