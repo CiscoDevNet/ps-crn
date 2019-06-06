@@ -26,25 +26,22 @@ pipeline {
                 cleanWs()
            }
         }
-        stage('Checkout Code') {
-            checkout([
-                $class: 'GitSCM',
-                branches: [[name: '*/master']],
-                doGenerateSubmoduleConfigurations: false,
-                extensions: [
-                    [$class: 'SubmoduleOption',
-                    disableSubmodules: false,
-                    parentCredentials: false,
-                    recursiveSubmodules: true,
-                    reference: '',
-                    trackingSubmodules: false]
-                ],
-                submoduleCfg: [],
-                userRemoteConfigs: [[url: 'https://github.com/CiscoDevNet/ps-crn']]
-            ])
-        }
         stage('Prep New Environment') {
             steps {
+                 // GIT submodule recursive checkout
+                checkout scm: [
+                        $class: 'GitSCM',
+                        branches: scm.branches,
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [[$class: 'SubmoduleOption',
+                                      disableSubmodules: false,
+                                      parentCredentials: false,
+                                      recursiveSubmodules: true,
+                                      reference: '',
+                                      trackingSubmodules: false]],
+                        submoduleCfg: [],
+                        userRemoteConfigs: scm.userRemoteConfigs
+                ]
                 echo 'Running build.yml...'
                 sh 'cp ansible.cfg.docker ansible.cfg'
             }
