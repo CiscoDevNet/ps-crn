@@ -27,7 +27,7 @@ pipeline {
         stage('Clean Previous Deployment') {
            steps {
                 echo 'Running build.yml...'
-                ansiblePlaybook disableHostKeyChecking: true, playbook: 'clean.yml'
+                ansiblePlaybook disableHostKeyChecking: true, extras: "-e session=jenkins_ps-crn1", playbook: 'clean.yml'
            }
         }
         stage('Build VIRL Topology') {
