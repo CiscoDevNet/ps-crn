@@ -52,6 +52,7 @@
       - name: Generate the Topology
         set_fact:
           topo_data: "{{ lookup('template', 'virl1_topology.j2') }}"
+          session: "{{ virl_tag }}_{{ topo_name }}_{{ topo_id }}"
 
       - name: Write debug topology file
         copy:
