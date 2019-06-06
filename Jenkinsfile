@@ -42,6 +42,7 @@ pipeline {
                 submoduleCfg: [],
                 userRemoteConfigs: [[url: 'https://github.com/CiscoDevNet/ps-crn']]
             ])
+        }
         stage('Prep New Environment') {
             steps {
                 echo 'Running build.yml...'
