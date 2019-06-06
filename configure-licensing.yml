@@ -2,10 +2,14 @@
   hosts: firewall:&virl_hosts
   gather_facts: no
   connection: network_cli
-  vars:
-    licensing:
-      token: ZjFkNzAzNmMtMmI3Ni00OTA3LTlhNTktMjgzODA4YTQyODMxLTE1ODYzMTQ5%0AMDEwMTN8MzZDaUNFczB4Z3hpbTI0M0hPUUUxckNpZFprZnpVZ2lNTUErdEk0%0Acmxxbz0%3D%0A
   tasks:
+    - name: Check to make sure that we have a Smart License token
+      assert:
+        that:
+          - license_token is defined and license_token
+        fail_msg: "Did not find Smart License token"
+        success_msg: "Found Smart License token"
+
     - name: check license status
       cli_command:
         command: show license status

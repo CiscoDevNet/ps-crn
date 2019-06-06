@@ -1,5 +1,6 @@
 - name: Export vManage Policy Lists
   hosts: localhost
+  connection: local
   roles:
     - ansible-viptela
   vars:
@@ -40,5 +41,5 @@
 
     - name: Write out policies to {{ file }}
       copy:
-        content: "{{ vmanage_policy | to_nice_yaml }}"
+        content: "{{ vmanage_policy | to_nice_yaml(indent=2, width=1337) }}"
         dest: "{{ file }}"

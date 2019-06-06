@@ -1,266 +1,529 @@
 vmanage_central_policies:
--   '@rid': 836
-    createdBy: admin
-    createdOn: 1558547266693
-    isPolicyActivated: true
-    lastUpdatedBy: admin
-    lastUpdatedOn: 1558547266693
-    policyDefinition:
-        assembly:
-        -   definitionId: 805a8f76-75a3-4c5b-b864-a44ede5d64d7
-            definitionName: block_prefixes
-            entries:
-            -   direction: service
-                siteLists:
-                - all_sites
-                vpnLists:
-                - all_vpns
-            type: data
-    policyDescription: central_policy
-    policyId: f103a31b-b6db-475c-9778-98cab4167726
-    policyName: central_policy
-    policyType: feature
-    policyVersion: 05222019T174746693
+- '@rid': 541
+  createdBy: admin
+  createdOn: 1559758908512
+  isPolicyActivated: true
+  lastUpdatedBy: admin
+  lastUpdatedOn: 1559758908512
+  policyDefinition:
+    assembly:
+    - definitionId: bad77629-0893-4753-8e88-7ff7ba518bdc
+      definitionName: guest_datapolicy
+      entries:
+      - direction: service
+        siteLists:
+        - all_sites
+        vpnLists:
+        - guest
+      type: data
+    - definitionId: 49dd32c6-69b1-40b9-8b6a-a2362324ac94
+      definitionName: corp_datapolicy
+      entries:
+      - direction: service
+        siteLists:
+        - all_sites
+        vpnLists:
+        - corp
+      type: data
+  policyDescription: central_policy
+  policyId: 246ca6f3-fc28-463e-a586-2c1b31015779
+  policyName: central_policy
+  policyType: feature
+  policyVersion: 06052019T182148512
 vmanage_policy_definitions:
-    acl: []
-    aclv6: []
-    cflowd: []
-    control: []
-    data:
-    -   activatedId:
-        - f103a31b-b6db-475c-9778-98cab4167726
-        defaultAction:
-            type: accept
-        definitionId: 805a8f76-75a3-4c5b-b864-a44ede5d64d7
-        description: block_prefixes
-        isActivatedByVsmart: true
-        lastUpdated: 1558639899967
-        name: block_prefixes
-        owner: admin
-        referenceCount: 1
-        sequences:
-        -   actions: []
-            baseAction: drop
-            match:
-                entries:
-                -   field: sourceDataPrefixList
-                    listName: blocked_prefixes
-                    listType: dataPrefix
-                    ref: fb69b956-ea10-459a-ab1f-2cfd83d2874a
-            sequenceId: 1
-            sequenceIpType: ipv4
-            sequenceName: Custom
-            sequenceType: data
-        -   actions: []
-            baseAction: drop
-            match:
-                entries:
-                -   field: destinationDataPrefixList
-                    listName: blocked_prefixes
-                    listType: dataPrefix
-                    ref: fb69b956-ea10-459a-ab1f-2cfd83d2874a
-            sequenceId: 11
-            sequenceIpType: ipv4
-            sequenceName: Custom
-            sequenceType: data
-        type: data
-    dnssecurity: []
-    hubandspoke: []
-    mesh: []
-    rewriterule: []
-    vpnmembershipgroup: []
+  acl: []
+  aclv6: []
+  cflowd: []
+  control: []
+  data:
+  - defaultAction:
+      type: accept
+    definitionId: ba8f7371-f378-42c0-af01-b7d8e9550af8
+    description: block_prefixes
+    isActivatedByVsmart: false
+    lastUpdated: 1559674695541
+    name: block_prefixes
+    owner: admin
+    referenceCount: 0
+    sequences:
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: sourceDataPrefixList
+          listName: blocked_prefixes
+          listType: dataPrefix
+          ref: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+      sequenceId: 1
+      sequenceIpType: ipv4
+      sequenceName: Custom
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: blocked_prefixes
+          listType: dataPrefix
+          ref: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+      sequenceId: 11
+      sequenceIpType: ipv4
+      sequenceName: Custom
+      sequenceType: data
+    type: data
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    defaultAction:
+      type: accept
+    definitionId: bad77629-0893-4753-8e88-7ff7ba518bdc
+    description: Central Guest Data Policy
+    isActivatedByVsmart: true
+    lastUpdated: 1559757287869
+    name: guest_datapolicy
+    owner: admin
+    referenceCount: 1
+    sequences:
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: blocked_prefixes
+          listType: dataPrefix
+          ref: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+      sequenceId: 1
+      sequenceIpType: ipv4
+      sequenceName: RTBH
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: sourceDataPrefixList
+          listName: blocked_prefixes
+          listType: dataPrefix
+          ref: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+      sequenceId: 11
+      sequenceIpType: ipv4
+      sequenceName: RTBH
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: colo_dataprefixes
+          listType: dataPrefix
+          ref: 177065b6-fc74-4caf-b643-1027fb1f170f
+      sequenceId: 21
+      sequenceIpType: ipv4
+      sequenceName: Internal Services
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: cloud_dataprefixes
+          listType: dataPrefix
+          ref: f684afa0-5e73-467a-9574-4eb7e52f7c74
+      sequenceId: 31
+      sequenceIpType: ipv4
+      sequenceName: Internal Services
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: corp_dataprefixes
+          listType: dataPrefix
+          ref: 5bebc761-3a1a-4abf-ad8b-d894e3b0d925
+      sequenceId: 41
+      sequenceIpType: ipv4
+      sequenceName: Internal Services
+      sequenceType: data
+    type: data
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    defaultAction:
+      type: accept
+    definitionId: 49dd32c6-69b1-40b9-8b6a-a2362324ac94
+    description: Corp Central Data Policy
+    isActivatedByVsmart: true
+    lastUpdated: 1559757391834
+    name: corp_datapolicy
+    owner: admin
+    referenceCount: 1
+    sequences:
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: blocked_prefixes
+          listType: dataPrefix
+          ref: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+      sequenceId: 1
+      sequenceIpType: ipv4
+      sequenceName: RTBH
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: sourceDataPrefixList
+          listName: blocked_prefixes
+          listType: dataPrefix
+          ref: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+      sequenceId: 11
+      sequenceIpType: ipv4
+      sequenceName: RTBH
+      sequenceType: data
+    - actions: []
+      baseAction: drop
+      match:
+        entries:
+        - field: destinationDataPrefixList
+          listName: guest_dataprefixes
+          listType: dataPrefix
+          ref: 43849eb5-6694-4c5d-bd3d-d293a6c4215f
+      sequenceId: 21
+      sequenceIpType: ipv4
+      sequenceName: To Guest
+      sequenceType: data
+    type: data
+  dnssecurity: []
+  hubandspoke: []
+  mesh: []
+  rewriterule: []
+  vpnmembershipgroup: []
 vmanage_policy_lists:
-    app:
-    -   description: Microsoft Applications List
-        entries:
-        -   app: bing
-        -   app: hockeyapp
-        -   app: live_hotmail
-        -   app: lync
-        -   app: lync_online
-        -   app: ms-services
-        -   app: ms_translator
-        -   app: ms-office-365
-        -   app: share-point
-        -   app: skydrive
-        -   app: skype
-        -   app: windows_azure
-        -   app: windows_update
-        -   app: windows_marketplace
-        -   app: windowslive
-        -   app: windowslivespace
-        -   app: windowsmedia
-        -   app: xbox
-        -   app: xbox_music
-        -   app: xbox_video
-        -   app: xboxlive
-        -   app: xboxlive_marketplace
-        -   app: word_online
-        -   app: powerpoint_online
-        isActivatedByVsmart: false
-        lastUpdated: 1558392475914
-        listId: 5a38c990-c944-4dc2-bd71-1efe9ca945f8
-        name: Microsoft_Apps
-        owner: system
-        readOnly: true
-        referenceCount: 0
-        type: app
-        version: '4.0'
-    -   description: Google Applications List
-        entries:
-        -   app: blogger
-        -   app: chrome_update
-        -   app: gcs
-        -   app: gmail
-        -   app: gmail_basic
-        -   app: gmail_chat
-        -   app: gmail_drive
-        -   app: gmail_mobile
-        -   app: google-services
-        -   app: google_accounts
-        -   app: google_ads
-        -   app: google_analytics
-        -   app: google_appengine
-        -   app: google_cache
-        -   app: google_calendar
-        -   app: google_code
-        -   app: google_desktop
-        -   app: google_docs
-        -   app: google_earth
-        -   app: google_groups
-        -   app: google_maps
-        -   app: google_photos
-        -   app: google_picasa
-        -   app: google-play
-        -   app: google_plus
-        -   app: google_safebrowsing
-        -   app: google_skymap
-        -   app: google_spaces
-        -   app: google_tags
-        -   app: google_toolbar
-        -   app: google_translate
-        -   app: google_trusted_store
-        -   app: google_weblight
-        -   app: googlebot
-        -   app: gstatic
-        -   app: gtalk
-        -   app: youtube
-        -   app: youtube_hd
-        isActivatedByVsmart: false
-        lastUpdated: 1558392475722
-        listId: e1d694f6-5d24-46a8-bc8f-c79f6be2ff5f
-        name: Google_Apps
-        owner: system
-        readOnly: true
-        referenceCount: 0
-        type: app
-        version: '3.0'
-    aspath: []
-    class: []
-    color: []
-    community: []
-    dataipv6prefix: []
-    dataprefix:
-    -   activatedId:
-        - f103a31b-b6db-475c-9778-98cab4167726
-        description: Desc Not Required
-        entries:
-        -   ipPrefix: 10.0.1.0/24
-        -   ipPrefix: 10.0.2.0/24
-        -   ipPrefix: 10.0.3.0/24
-        isActivatedByVsmart: true
-        lastUpdated: 1558640708770
-        listId: fb69b956-ea10-459a-ab1f-2cfd83d2874a
-        name: blocked_prefixes
-        owner: admin
-        readOnly: false
-        referenceCount: 1
-        type: dataPrefix
-        version: '0'
-    dataprefixall:
-    -   activatedId:
-        - f103a31b-b6db-475c-9778-98cab4167726
-        description: Desc Not Required
-        entries:
-        -   ipPrefix: 10.0.1.0/24
-        -   ipPrefix: 10.0.2.0/24
-        -   ipPrefix: 10.0.3.0/24
-        isActivatedByVsmart: true
-        lastUpdated: 1558640708770
-        listId: fb69b956-ea10-459a-ab1f-2cfd83d2874a
-        name: blocked_prefixes
-        owner: admin
-        readOnly: false
-        referenceCount: 1
-        type: dataPrefix
-        version: '0'
-    extcommunity: []
-    ipprefixall:
-    -   description: Desc Not Required
-        entries:
-        -   ipPrefix: 10.8.0.0/16
-        -   ipPrefix: 10.9.0.0/16
-        isActivatedByVsmart: false
-        lastUpdated: 1558465858658
-        listId: 457936db-4a7e-4d9c-9879-334058914e7a
-        name: block_list
-        owner: admin
-        readOnly: false
-        referenceCount: 0
-        type: prefix
-        version: '0'
-    ipssignature: []
-    ipv6prefix: []
-    localdomain: []
-    mirror: []
-    policer: []
-    prefix:
-    -   description: Desc Not Required
-        entries:
-        -   ipPrefix: 10.8.0.0/16
-        -   ipPrefix: 10.9.0.0/16
-        isActivatedByVsmart: false
-        lastUpdated: 1558465858658
-        listId: 457936db-4a7e-4d9c-9879-334058914e7a
-        name: block_list
-        owner: admin
-        readOnly: false
-        referenceCount: 0
-        type: prefix
-        version: '0'
-    site:
-    -   activatedId:
-        - f103a31b-b6db-475c-9778-98cab4167726
-        description: Desc Not Required
-        entries:
-        -   siteId: 0-999
-        isActivatedByVsmart: true
-        lastUpdated: 1558465859803
-        listId: 32a470b8-1750-432b-b13a-128cdffff87f
-        name: all_sites
-        owner: admin
-        readOnly: false
-        referenceCount: 1
-        type: site
-        version: '0'
-    sla: []
-    tloc: []
-    umbrelladata: []
-    urlblacklist: []
-    urlwhitelist: []
-    vpn:
-    -   activatedId:
-        - f103a31b-b6db-475c-9778-98cab4167726
-        description: Desc Not Required
-        entries:
-        -   vpn: 0-999
-        isActivatedByVsmart: true
-        lastUpdated: 1558465860938
-        listId: 28caf383-90a3-4805-a967-589d46948075
-        name: all_vpns
-        owner: admin
-        readOnly: false
-        referenceCount: 1
-        type: vpn
-        version: '0'
-    zone: []
+  app:
+  - description: Microsoft Applications List
+    entries:
+    - app: bing
+    - app: hockeyapp
+    - app: live_hotmail
+    - app: lync
+    - app: lync_online
+    - app: ms-services
+    - app: ms_translator
+    - app: ms-office-365
+    - app: share-point
+    - app: skydrive
+    - app: skype
+    - app: windows_azure
+    - app: windows_update
+    - app: windows_marketplace
+    - app: windowslive
+    - app: windowslivespace
+    - app: windowsmedia
+    - app: xbox
+    - app: xbox_music
+    - app: xbox_video
+    - app: xboxlive
+    - app: xboxlive_marketplace
+    - app: word_online
+    - app: powerpoint_online
+    isActivatedByVsmart: false
+    lastUpdated: 1559670965532
+    listId: e8003121-6703-4b1d-a5a7-02a67ff443d8
+    name: Microsoft_Apps
+    owner: system
+    readOnly: true
+    referenceCount: 0
+    type: app
+    version: '4.0'
+  - description: Google Applications List
+    entries:
+    - app: blogger
+    - app: chrome_update
+    - app: gcs
+    - app: gmail
+    - app: gmail_basic
+    - app: gmail_chat
+    - app: gmail_drive
+    - app: gmail_mobile
+    - app: google-services
+    - app: google_accounts
+    - app: google_ads
+    - app: google_analytics
+    - app: google_appengine
+    - app: google_cache
+    - app: google_calendar
+    - app: google_code
+    - app: google_desktop
+    - app: google_docs
+    - app: google_earth
+    - app: google_groups
+    - app: google_maps
+    - app: google_photos
+    - app: google_picasa
+    - app: google-play
+    - app: google_plus
+    - app: google_safebrowsing
+    - app: google_skymap
+    - app: google_spaces
+    - app: google_tags
+    - app: google_toolbar
+    - app: google_translate
+    - app: google_trusted_store
+    - app: google_weblight
+    - app: googlebot
+    - app: gstatic
+    - app: gtalk
+    - app: youtube
+    - app: youtube_hd
+    isActivatedByVsmart: false
+    lastUpdated: 1559670965321
+    listId: bf3430a1-ac1b-41ff-9041-8f0917b0a819
+    name: Google_Apps
+    owner: system
+    readOnly: true
+    referenceCount: 0
+    type: app
+    version: '3.0'
+  aspath: []
+  class: []
+  color: []
+  community: []
+  dataipv6prefix: []
+  dataprefix:
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.0.1.0/24
+    - ipPrefix: 10.0.2.0/24
+    - ipPrefix: 10.0.3.0/24
+    - ipPrefix: 10.0.4.0/24
+    - ipPrefix: 10.0.5.0/24
+    - ipPrefix: 172.18.0.0/16
+    isActivatedByVsmart: true
+    lastUpdated: 1559759136916
+    listId: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+    name: blocked_prefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 3
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.20.3.0/24
+    - ipPrefix: 10.21.3.0/24
+    - ipPrefix: 10.22.3.0/24
+    - ipPrefix: 10.23.3.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756572212
+    listId: 43849eb5-6694-4c5d-bd3d-d293a6c4215f
+    name: guest_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 172.20.1.0/24
+    - ipPrefix: 172.21.1.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756673529
+    listId: 177065b6-fc74-4caf-b643-1027fb1f170f
+    name: colo_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.20.2.0/24
+    - ipPrefix: 10.20.4.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756863419
+    listId: f684afa0-5e73-467a-9574-4eb7e52f7c74
+    name: cloud_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.20.4.0/24
+    - ipPrefix: 10.21.4.0/24
+    - ipPrefix: 10.22.4.0/24
+    - ipPrefix: 10.23.4.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756590921
+    listId: 5bebc761-3a1a-4abf-ad8b-d894e3b0d925
+    name: corp_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  dataprefixall:
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.0.1.0/24
+    - ipPrefix: 10.0.2.0/24
+    - ipPrefix: 10.0.3.0/24
+    - ipPrefix: 10.0.4.0/24
+    - ipPrefix: 10.0.5.0/24
+    - ipPrefix: 172.18.0.0/16
+    isActivatedByVsmart: true
+    lastUpdated: 1559759136916
+    listId: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
+    name: blocked_prefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 3
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.20.3.0/24
+    - ipPrefix: 10.21.3.0/24
+    - ipPrefix: 10.22.3.0/24
+    - ipPrefix: 10.23.3.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756572212
+    listId: 43849eb5-6694-4c5d-bd3d-d293a6c4215f
+    name: guest_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 172.20.1.0/24
+    - ipPrefix: 172.21.1.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756673529
+    listId: 177065b6-fc74-4caf-b643-1027fb1f170f
+    name: colo_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.20.2.0/24
+    - ipPrefix: 10.20.4.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756863419
+    listId: f684afa0-5e73-467a-9574-4eb7e52f7c74
+    name: cloud_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - ipPrefix: 10.20.4.0/24
+    - ipPrefix: 10.21.4.0/24
+    - ipPrefix: 10.22.4.0/24
+    - ipPrefix: 10.23.4.0/24
+    isActivatedByVsmart: true
+    lastUpdated: 1559756590921
+    listId: 5bebc761-3a1a-4abf-ad8b-d894e3b0d925
+    name: corp_dataprefixes
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: dataPrefix
+    version: '0'
+  extcommunity: []
+  ipprefixall: []
+  ipssignature: []
+  ipv6prefix: []
+  localdomain: []
+  mirror: []
+  policer: []
+  prefix: []
+  site:
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - siteId: 0-999
+    isActivatedByVsmart: true
+    lastUpdated: 1559674692178
+    listId: 45582f9b-88f4-4d0c-b5ca-3f53389d002f
+    name: all_sites
+    owner: admin
+    readOnly: false
+    referenceCount: 2
+    type: site
+    version: '0'
+  sla: []
+  tloc: []
+  umbrelladata: []
+  urlblacklist: []
+  urlwhitelist: []
+  vpn:
+  - description: Desc Not Required
+    entries:
+    - vpn: 0-999
+    isActivatedByVsmart: false
+    lastUpdated: 1559674693509
+    listId: 431f0297-61e4-4b54-9f6a-bb512c997458
+    name: all_vpns
+    owner: admin
+    readOnly: false
+    referenceCount: 0
+    type: vpn
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - vpn: '11'
+    isActivatedByVsmart: true
+    lastUpdated: 1559756115672
+    listId: eb7b4072-1566-4575-b31f-2cd308decc10
+    name: corp
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: vpn
+    version: '0'
+  - activatedId:
+    - 246ca6f3-fc28-463e-a586-2c1b31015779
+    description: Desc Not Required
+    entries:
+    - vpn: '10'
+    isActivatedByVsmart: true
+    lastUpdated: 1559756108746
+    listId: f67507ad-0340-4273-806d-18d66649436b
+    name: guest
+    owner: admin
+    readOnly: false
+    referenceCount: 1
+    type: vpn
+    version: '0'
+  zone: []
