@@ -7,6 +7,7 @@
       asa_command:
         commands:
           - "license smart deregister"
+      ignore_errors: yes
 
 - hosts: localhost
   connection: local
