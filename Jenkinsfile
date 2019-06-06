@@ -7,12 +7,13 @@ pipeline {
     }
     options {
       disableConcurrentBuilds()
-      lock resource: 'jenkins_ps-crn_hourly'
+      lock resource: 'jenkins_ps-crn1'
     }
     environment {
         VIRL_USERNAME = credentials('cpn-virl-username')
         VIRL_PASSWORD = credentials('cpn-virl-password')
         VIRL_HOST = credentials('cpn-virl-host')
+        VIRL_SESSION = jenkins_ps-crn1
         VIPTELA_ORG = credentials('viptela-org')
         LICENSE_TOKEN = credentials('license-token')
         HOME = "${WORKSPACE}"

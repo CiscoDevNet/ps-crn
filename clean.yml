@@ -12,6 +12,8 @@
 - hosts: localhost
   connection: local
   gather_facts: no
+  vars:
+    session: "{{ lookup('env', 'VIRL_SESSION') | default('') }}"
   tasks:
 #  - name: Find previsouly created certs
 #    find:
