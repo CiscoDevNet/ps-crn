@@ -32,7 +32,8 @@
         cli_command:
           command: show license status
         register: license_status
-        until: "'AUTHORIZED' in license_status.stdout|default(False)"
+        until: "'AUTHORIZED' in license_status.stdout"
+        ignore_errors: yes
         retries: 60
         delay: 10
       when: initial_check.stdout is not search("AUTHORIZED")
