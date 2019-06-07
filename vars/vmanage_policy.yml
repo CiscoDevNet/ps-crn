@@ -199,91 +199,7 @@ vmanage_policy_definitions:
   rewriterule: []
   vpnmembershipgroup: []
 vmanage_policy_lists:
-  app:
-  - description: Microsoft Applications List
-    entries:
-    - app: bing
-    - app: hockeyapp
-    - app: live_hotmail
-    - app: lync
-    - app: lync_online
-    - app: ms-services
-    - app: ms_translator
-    - app: ms-office-365
-    - app: share-point
-    - app: skydrive
-    - app: skype
-    - app: windows_azure
-    - app: windows_update
-    - app: windows_marketplace
-    - app: windowslive
-    - app: windowslivespace
-    - app: windowsmedia
-    - app: xbox
-    - app: xbox_music
-    - app: xbox_video
-    - app: xboxlive
-    - app: xboxlive_marketplace
-    - app: word_online
-    - app: powerpoint_online
-    isActivatedByVsmart: false
-    lastUpdated: 1559670965532
-    listId: e8003121-6703-4b1d-a5a7-02a67ff443d8
-    name: Microsoft_Apps
-    owner: system
-    readOnly: true
-    referenceCount: 0
-    type: app
-    version: '4.0'
-  - description: Google Applications List
-    entries:
-    - app: blogger
-    - app: chrome_update
-    - app: gcs
-    - app: gmail
-    - app: gmail_basic
-    - app: gmail_chat
-    - app: gmail_drive
-    - app: gmail_mobile
-    - app: google-services
-    - app: google_accounts
-    - app: google_ads
-    - app: google_analytics
-    - app: google_appengine
-    - app: google_cache
-    - app: google_calendar
-    - app: google_code
-    - app: google_desktop
-    - app: google_docs
-    - app: google_earth
-    - app: google_groups
-    - app: google_maps
-    - app: google_photos
-    - app: google_picasa
-    - app: google-play
-    - app: google_plus
-    - app: google_safebrowsing
-    - app: google_skymap
-    - app: google_spaces
-    - app: google_tags
-    - app: google_toolbar
-    - app: google_translate
-    - app: google_trusted_store
-    - app: google_weblight
-    - app: googlebot
-    - app: gstatic
-    - app: gtalk
-    - app: youtube
-    - app: youtube_hd
-    isActivatedByVsmart: false
-    lastUpdated: 1559670965321
-    listId: bf3430a1-ac1b-41ff-9041-8f0917b0a819
-    name: Google_Apps
-    owner: system
-    readOnly: true
-    referenceCount: 0
-    type: app
-    version: '3.0'
+  app: []
   aspath: []
   class: []
   color: []
@@ -299,6 +215,7 @@ vmanage_policy_lists:
     - ipPrefix: 10.0.3.0/24
     - ipPrefix: 10.0.4.0/24
     - ipPrefix: 10.0.5.0/24
+    # - ipPrefix: 172.18.0.0/16
     isActivatedByVsmart: true
     lastUpdated: 1559759136916
     listId: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
@@ -372,90 +289,7 @@ vmanage_policy_lists:
     referenceCount: 1
     type: dataPrefix
     version: '0'
-  dataprefixall:
-  - activatedId:
-    - 246ca6f3-fc28-463e-a586-2c1b31015779
-    description: Desc Not Required
-    entries:
-    - ipPrefix: 10.0.1.0/24
-    - ipPrefix: 10.0.2.0/24
-    - ipPrefix: 10.0.3.0/24
-    - ipPrefix: 10.0.4.0/24
-    - ipPrefix: 10.0.5.0/24
-    - ipPrefix: 172.18.0.0/16
-    isActivatedByVsmart: true
-    lastUpdated: 1559759136916
-    listId: 33fcba1a-b21e-4608-958d-a8bd3b160e9b
-    name: blocked_prefixes
-    owner: admin
-    readOnly: false
-    referenceCount: 3
-    type: dataPrefix
-    version: '0'
-  - activatedId:
-    - 246ca6f3-fc28-463e-a586-2c1b31015779
-    description: Desc Not Required
-    entries:
-    - ipPrefix: 10.20.3.0/24
-    - ipPrefix: 10.21.3.0/24
-    - ipPrefix: 10.22.3.0/24
-    - ipPrefix: 10.23.3.0/24
-    isActivatedByVsmart: true
-    lastUpdated: 1559756572212
-    listId: 43849eb5-6694-4c5d-bd3d-d293a6c4215f
-    name: guest_dataprefixes
-    owner: admin
-    readOnly: false
-    referenceCount: 1
-    type: dataPrefix
-    version: '0'
-  - activatedId:
-    - 246ca6f3-fc28-463e-a586-2c1b31015779
-    description: Desc Not Required
-    entries:
-    - ipPrefix: 172.20.1.0/24
-    - ipPrefix: 172.21.1.0/24
-    isActivatedByVsmart: true
-    lastUpdated: 1559756673529
-    listId: 177065b6-fc74-4caf-b643-1027fb1f170f
-    name: colo_dataprefixes
-    owner: admin
-    readOnly: false
-    referenceCount: 1
-    type: dataPrefix
-    version: '0'
-  - activatedId:
-    - 246ca6f3-fc28-463e-a586-2c1b31015779
-    description: Desc Not Required
-    entries:
-    - ipPrefix: 10.20.2.0/24
-    - ipPrefix: 10.20.4.0/24
-    isActivatedByVsmart: true
-    lastUpdated: 1559756863419
-    listId: f684afa0-5e73-467a-9574-4eb7e52f7c74
-    name: cloud_dataprefixes
-    owner: admin
-    readOnly: false
-    referenceCount: 1
-    type: dataPrefix
-    version: '0'
-  - activatedId:
-    - 246ca6f3-fc28-463e-a586-2c1b31015779
-    description: Desc Not Required
-    entries:
-    - ipPrefix: 10.20.4.0/24
-    - ipPrefix: 10.21.4.0/24
-    - ipPrefix: 10.22.4.0/24
-    - ipPrefix: 10.23.4.0/24
-    isActivatedByVsmart: true
-    lastUpdated: 1559756590921
-    listId: 5bebc761-3a1a-4abf-ad8b-d894e3b0d925
-    name: corp_dataprefixes
-    owner: admin
-    readOnly: false
-    referenceCount: 1
-    type: dataPrefix
-    version: '0'
+  dataprefixall: []
   extcommunity: []
   ipprefixall: []
   ipssignature: []
