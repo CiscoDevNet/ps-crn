@@ -64,6 +64,12 @@ pipeline {
            }
         }
 */
+        stage('Update Policy') {
+           steps {
+                echo 'Check SD-WAN...'
+                ansiblePlaybook disableHostKeyChecking: true, playbook: 'update-rtbh.yml'
+           }
+        }
         stage('Running Tests') {
            steps {
                 echo 'Check SD-WAN...'
