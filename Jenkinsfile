@@ -28,33 +28,6 @@ pipeline {
             branch('')
         }
     }
-    triggers {
-        githubPullRequest {
-            admin('stevenca')
-            admins(['chrishocker', 'jasonkin'])
-            cron('H/5 * * * *')
-            triggerPhrase('.*(re)?run tests.*')
-            onlyTriggerPhrase()
-            useGitHubHooks()
-/*
-            permitAll()
-            autoCloseFailedPullRequests()
-            allowMembersOfWhitelistedOrgsAsAdmin()
-            extensions {
-                commitStatus {
-                    context('deploy to staging site')
-                    triggeredStatus('starting deployment to staging site...')
-                    startedStatus('deploying to staging site...')
-                    statusUrl('http://mystatussite.com/prs')
-                    completedStatus('SUCCESS', 'All is well')
-                    completedStatus('FAILURE', 'Something went wrong. Investigate!')
-                    completedStatus('PENDING', 'still in progress...')
-                    completedStatus('ERROR', 'Something went really wrong. Investigate!')
-                }
-            }
-*/
-        }
-    }
     stages {
         stage('Clean Previous Deployment') {
            steps {
