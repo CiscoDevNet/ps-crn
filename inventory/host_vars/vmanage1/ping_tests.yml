@@ -24,7 +24,7 @@ vmanage_ping_tests:
   - dst_ip: 10.23.3.10
     vedge: site1-vedge1
     vpn: 10
-    pass: no
+    pass: yes
   - dst_ip: 10.22.3.10
     vedge: site2-vedge1
     vpn: 10
