@@ -1,21 +1,27 @@
-- hosts: router
+- hosts: router:&virl_hosts
   connection: network_cli
   gather_facts: no
   roles:
     - ansible-pyats
+  vars:
+    snapshot_file: "{{ inventory_hostname }}_bgp.json"
   tasks:
-  - include_role:
-      name: ansible-pyats
-      tasks_from: compare
-    vars:
-      command: show ntp associations
-      snapshot_file: "{{ inventory_hostname }}_ntp.json"
-
-  - debug:
-      msg: "{{ diff_output }}"
+  - set_fact:
+      snapshot_data: "{{ lookup('file', snapshot_file) | from_json }}"
 
 #  - debug:
-#      var: parsed_output
+#      var: snapshot_data
+#
+  - pyats_parse_command:
+      command: show ip route bgp
+      compare: "{{ snapshot_data }}"
+    register: command_output
+
+#  - debug:
+#      msg: "{{ command_output }}"
+
+  - debug:
+      var: command_output
 
 #  - set_fact:
 #      output1: "{{ parsed_output }}"
