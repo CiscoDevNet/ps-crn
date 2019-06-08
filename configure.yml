@@ -40,7 +40,7 @@
         dest: "{{ hostvars[item].interfaces.GigabitEthernet2.ip.primary | ipaddr('address') }}"
       loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
       register: result
-      retries: 3
+      retries: 60
       delay: 10
       until: result is not failed
 
@@ -49,7 +49,7 @@
         dest: "{{ hostvars[item].interfaces.GigabitEthernet3.ip.primary | ipaddr('address') }}"
       loop: "{{ groups.internet_routers | intersect(groups.virl_hosts) }}"
       register: result
-      retries: 3
+      retries: 60
       delay: 10
       until: result is not failed
 
@@ -147,7 +147,7 @@
         dest: "{{ hostvars[item].vpn_instances[0].interfaces[0].ip.address | ipaddr('address') }}"
       loop: "{{ groups.viptela_control }}"
       register: result
-      retries: 3
+      retries: 60
       delay: 10
       until: result is not failed
 
@@ -332,7 +332,7 @@
       loop: "{{ groups.viptela_vedge | intersect(groups.virl_hosts) }}"
       when: hostvars[item].vpn_instances is defined
       register: result
-      retries: 3
+      retries: 60
       delay: 10
       until: result is not failed
 
