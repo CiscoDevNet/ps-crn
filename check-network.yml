@@ -31,7 +31,7 @@
 #
 #  - include_role:
 #      name: ansible-pyats
-#      tasks_from: parse_command
+#      tasks_from: compare_
 #    vars:
 #      command: show ntp associations
 #
