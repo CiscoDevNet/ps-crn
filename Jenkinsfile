@@ -19,15 +19,6 @@ pipeline {
         HOME = "${WORKSPACE}"
         DEFAULT_LOCAL_TMP = "${WORKSPACE}/ansible"
     }
-    scm {
-        git {
-            remote {
-                github('ciscodevnet/ps-crn')
-                refspec('+refs/pull/*:refs/remotes/origin/pr/* +refs/heads/*:refs/remotes/origin/master ')
-            }
-            branch('')
-        }
-    }
     stages {
         stage('Clean Previous Deployment') {
            steps {
