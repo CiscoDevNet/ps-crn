@@ -3,7 +3,7 @@
 ## Inventory-Driven Configuration</h2>
 <img src="images/inventory_driven_configuration.png"/>
 
-## Flexibility of Data-Driven Automation</h2>
+## Data-Driven Automation</h2>
 <img src="images/data_template_configuration.png"/>
 
 ## Roles Used</h2>
@@ -21,7 +21,7 @@
 * Run a command and return structured output
 * Diff with command output of previous command
 
-### Testbed Bring-Up Sequence
+## Testbed Bring-Up Sequence
 * Create topology
 * License VNFs
 * Configure SD-WAN control plane
