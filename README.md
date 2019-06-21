@@ -6,6 +6,5 @@ the following:
 * [Architecture](docs/architecture.md) - Detailed architecture with customer-focused use cases
 * [Simulation](docs/simulation.md#topology) - Dynamic VIRL topology in which to simulate architecture
 * [Automation](docs/automation.md) - Automation tooling to deploy and operate in simulated and production environments
-* Testing - Test tooling to verify deployment for CI/CD pipelines
-* [Cisco DevNet](developer.cisco.com) - Learning Labs and Sandboxes to teach and experience the components of the DevOps
-Bundle
+* [Testing](docs/testing.md) - Test tooling to verify deployment for CI/CD pipelines
+* [DevNet](docs/learning.md) - Learning Labs and Sandboxes to teach and experience the components of the DevOps Bundle
