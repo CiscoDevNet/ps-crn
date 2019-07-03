@@ -6,14 +6,16 @@ RUN apt-get update && apt-get install -y python-pip openssh-client curl sshpass
 # Install requirements.
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --requirement /tmp/requirements.txt
+RUN pip install virlutils
 
 # Define working directory.
-ENV ANSIBLE_GATHERING smart
+# ENV ANSIBLE_GATHERING smart
 ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_RETRY_FILES_ENABLED false
-ENV ANSIBLE_ROLES_PATH ./roles
+# ENV ANSIBLE_ROLES_PATH ./roles
 ENV ANSIBLE_SSH_PIPELINING True
-ENV ANSIBLE_LIBRARY ./library
+# ENV ANSIBLE_LIBRARY ./library
 
-# Define default command.
-CMD ["bash"]
+WORKDIR /ps-crn
+ 
+# ENTRYPOINT ["ansible-playbook"]
