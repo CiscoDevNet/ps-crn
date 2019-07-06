@@ -13,8 +13,11 @@
   connection: local
   gather_facts: no
   vars:
-    session: "{{ lookup('env', 'VIRL_SESSION') | default('') }}"
+    virl_session: "{{ lookup('env', 'VIRL_SESSION') | default('') }}"
   tasks:
+  - set_fact:
+      sim_id: "{{ virl_session if virl_session != '' else lookup('file', virl_sim_file, errors='ignore') | default('') }}"
+
 #  - name: Find previsouly created certs
 #    find:
 #      paths: "{{ viptela_cert_dir }}"
@@ -39,19 +42,22 @@
     when: hostvars[item].ansible_host is defined
     loop: "{{ groups.all }}"
 
-  - name: Destroy the simulation
-    uri:
-      url: "http://{{ virl_host }}:19399/simengine/rest/stop/{{ sim_id }}"
-      user: "{{ virl_username }}"
-      password: "{{ virl_password }}"
-      method: GET
-      return_content: yes
-    no_log: false  # Don't show output as your password will be on the URI string
-    register: uri_results
-    failed_when: false
-    delegate_to: localhost
-    vars:
-      sim_id: "{{ session | default(lookup('file', virl_sim_file, errors='ignore')) }}"
+  - block:
+    - debug:
+        msg: "Deleting simulation: {{ sim_id }}"
+
+    - name: Destroy the simulation
+      uri:
+        url: "http://{{ virl_host }}:19399/simengine/rest/stop/{{ sim_id }}"
+        user: "{{ virl_username }}"
+        password: "{{ virl_password }}"
+        method: GET
+        return_content: yes
+      no_log: false  # Don't show output as your password will be on the URI string
+      register: uri_results
+      ignore_errors: yes
+      delegate_to: localhost
+    when: sim_id != ""
 
   - name: Delete Simulation ID File
     file:
