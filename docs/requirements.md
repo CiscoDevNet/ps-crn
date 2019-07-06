@@ -22,7 +22,7 @@ cd ps-crn
 ## Software Dependancies
 
 * VIRL setup with Cisco SD-WAN, ASAv, and CSR1000v images.
-* [ansible-viptela](https://github.com/CiscoDevNet/ansible-viptela) (Delivered as part of the repo when `--recursive` is used when clogin)
+* [ansible-viptela](https://github.com/CiscoDevNet/ansible-viptela) (Delivered as part of the repo when `--recursive` is used when cloning)
 * Python dependancies listed in requirements.txt
 * sshpass
 
@@ -76,5 +76,5 @@ The easiest way to provide this information to the playbooks is to create `inven
 
 ```yaml
 organization_name: "<your org name>"
-license_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+license_token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
