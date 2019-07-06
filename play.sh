@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker run -it --rm -v $PWD:/ps-crn --env PWD="/ps-crn" --env USER="$USER" ps-crn ansible-playbook "$@" 
+docker run -it --rm -v $PWD:/ansible --env PWD="/ansible" --env USER="$USER" ansible-viptela ansible-playbook "$@" 

@@ -9,13 +9,8 @@ RUN pip install --requirement /tmp/requirements.txt
 RUN pip install virlutils
 
 # Define working directory.
-# ENV ANSIBLE_GATHERING smart
 ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_RETRY_FILES_ENABLED false
-# ENV ANSIBLE_ROLES_PATH ./roles
 ENV ANSIBLE_SSH_PIPELINING True
-# ENV ANSIBLE_LIBRARY ./library
 
-WORKDIR /ps-crn
- 
-# ENTRYPOINT ["ansible-playbook"]
+WORKDIR /ansible
