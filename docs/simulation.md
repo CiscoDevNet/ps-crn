@@ -48,22 +48,14 @@ ansible-playbook configure-licensing.yml
 ansible-playbook configure.yml
 ```
 
-#### Extra Vars
-
-* `CA`: only create the private CA
-* `control`: only provision the Viptela control plane
-* `vedge`: only provision the Viptela vEdges
-* `check_control`: check connectivity of the control plane
-* `check_edge`: check connectivity of the edge
-* `check_all`: check full connectivity of the overlay
-
-This playbook will:
-* Check for the existance of the license file
-* Check initial connectivity
-* Generate a local CA
-* Configure all Viptela elements
-* Create CSR, sign CSR, and install certificate
-* Add vbond and vsmart to vmanage
+> **Extra Vars**
+>
+> * `CA`: only create the private CA
+> * `control`: only provision the Viptela control plane
+> * `vedge`: only provision the Viptela vEdges
+> * `check_control`: check connectivity of the control plane
+> * `check_edge`: check connectivity of the edge
+> * `check_all`: check full connectivity of the overlay
 
 ### Wait for the vEdges to sync:
 
@@ -77,10 +69,10 @@ ansible-playbook waitfor-sync.yml
 ansible-playbook import-templates.yml
 ```
 
-#### Extra Vars
-
-* `vmanage_ip`
-
+> **Extra Vars**
+>
+> * `vmanage_ip`
+>
 > To specify the IP address of the vManage server into which to import the templates:
 >
 > ```bash
@@ -93,11 +85,11 @@ ansible-playbook import-templates.yml
 ansible-playbook attach_templates.yml
 ```
 
-To attach a template to a limited set of devices:
-
-```bash
-ansible-playbook attach_templates.yml --limit=east-rtr1,west-rtr1
-```
+> To attach a template to a limited set of devices:
+>
+> ```bash
+> ansible-playbook attach_templates.yml --limit=east-rtr1,west-rtr1
+> ```
 
 ### Import Policy
 
@@ -105,15 +97,15 @@ ansible-playbook attach_templates.yml --limit=east-rtr1,west-rtr1
 ansible-playbook import-policy.yml
 ```
 
-#### Extra Vars
-
-* `vmanage_ip`
-
-To specify the IP address of the vManage server into which to import the templates:
-
-```bash
-ansible-playbook import-policy.yml -e vmanage_ip=1.2.3.4
-```
+> **Extra Vars**
+>
+> * `vmanage_ip`
+>
+> To specify the IP address of the vManage server into which to import the templates:
+>
+> ```bash
+> ansible-playbook import-policy.yml -e vmanage_ip=1.2.3.4
+> ```
 
 ### Activate Central Policy
 
@@ -129,15 +121,15 @@ ansible-playbook activate-central-policy.yml
 ansible-playbook export-templates.yml
 ```
 
-#### Extra Vars
-
-* `vmanage_ip`
-
-To specify the IP address of the vManage server from which to export the templates:
-
-```bash
-ansible-playbook export-temapltes.yml -e vmanage_ip=1.2.3.4
-```
+> **Extra Vars**
+>
+> * `vmanage_ip`
+>
+> To specify the IP address of the vManage server from which to export the templates:
+> 
+> ```bash
+> ansible-playbook export-temapltes.yml -e vmanage_ip=1.2.3.4
+> ```
 
 ### Detach templates from devices
 ```yaml
@@ -149,10 +141,3 @@ ansible-playbook detach_templates.yml
 ```bash
 ansible-playbook clean.yml
 ```
-
-This playbook will:
-
-* De-register hosts from Smart Licensing
-* Remove topology devices from the `known_hosts` file
-* Remove the `myCA` directory
-* Destroy the topology specified in `.virl/default/id`
