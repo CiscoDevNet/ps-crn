@@ -28,13 +28,13 @@ This playbook will:
 * Launch the topology file
 * Wait until they show as reachable in VIRL
 
-#### Extra Vars
-
-* `virl_tag`: Set the tag used for the topology (Default: username)
-
-```shell
-ansible-playbook build.yml -e virl_tag=test1
-```
+> **Extra Vars**
+>
+> * `virl_tag`: Set the tag used for the topology (Default: username)
+> 
+> ```bash
+> ansible-playbook build.yml -e virl_tag=test1
+> ```
 
 ### License the VNFs in the environment
 
