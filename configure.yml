@@ -188,6 +188,8 @@
     - debug
   any_errors_fatal: true
   gather_facts: no
+  vars:
+    ansible_network_os: ios
   tasks:
     - name: Copy Root CA to controllers
       copy:

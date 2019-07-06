@@ -2,8 +2,6 @@ all:
   vars:
     ansible_user: admin
     ansible_password: admin
-    ansible_network_os: ios
-    netconf_template_os: ios
   children:
     east-colo:
       hosts:

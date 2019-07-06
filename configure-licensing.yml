@@ -18,7 +18,9 @@
     - block:
       - name: Update certificates
         cli_command:
-          command: crypto ca trustpool import url http://www.cisco.com/security/pki/trs/ios_core.p7b
+          command: "crypto ca trustpool import url http://www.cisco.com/security/pki/trs/ios_core.p7b"
+          prompt: continue?
+          answer: y
 
       - name: Register to smart account
         cli_command:
